@@ -15,7 +15,7 @@ const docTracks = require("insertions/tracks");
 mongo.connect("mongodb://localhost:27017").then(
   (client) => {
     console.log("connection success");
-    let db = client.db("grandPrix");
+    let db = client.db("grandprix");
 
     let drivers = db.collection("drivers", collDrivers, (err) => {
       console.error(err);
