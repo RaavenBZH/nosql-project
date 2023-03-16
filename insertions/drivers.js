@@ -1,39 +1,103 @@
 const insertion = [
   {
-    lastName: "Hamilton",
-    firstName: "Lewis",
-    age: 38,
-    team: "Mercedes",
-  },
-  {
     lastName: "Verstappen",
     firstName: "Max",
-    age: 25,
-    team: "Red Bull",
+    birthdate: "30-09-1997",
+  },
+  {
+    lastName: "Perez",
+    firstName: "Sergio",
+    birthdate: "26-01-1990",
   },
   {
     lastName: "Leclerc",
     firstName: "Charles",
-    age: 25,
-    team: "Ferrari",
+    birthdate: "16-10-1997",
   },
   {
-    lastName: "Alonso",
-    firstName: "Fernando",
-    age: 41,
-    team: "Aston Martin",
+    lastName: "Sainz",
+    firstName: "Carlos",
+    birthdate: "01-09-1994",
+  },
+  {
+    lastName: "Hamilton",
+    firstName: "Lewis",
+    birthdate: "07-01-1985",
+  },
+  {
+    lastName: "Russell",
+    firstName: "George",
+    birthdate: "15-02-1998",
   },
   {
     lastName: "Ocon",
     firstName: "Esteban",
-    age: 26,
-    team: "Alpine",
+    birthdate: "17-09-1996",
+  },
+  {
+    lastName: "Alonso",
+    firstName: "Fernando",
+    birthdate: "29-07-1981",
+  },
+  {
+    lastName: "Norris",
+    firstName: "Lando",
+    birthdate: "13-11-1999",
+  },
+  {
+    lastName: "Ricciardo",
+    firstName: "Daniel",
+    birthdate: "01-07-1989",
   },
   {
     lastName: "Bottas",
     firstName: "Valtteri",
-    age: 33,
-    team: "Alfa Romeo",
+    birthdate: "28-08-1989",
+  },
+  {
+    lastName: "Zhou",
+    firstName: "Guanyu",
+    birthdate: "30-05-1999",
+  },
+  {
+    lastName: "Stroll",
+    firstName: "Lance",
+    birthdate: "29-10-1998",
+  },
+  {
+    lastName: "Vettel",
+    firstName: "Sebastian",
+    birthdate: "03-07-1987",
+  },
+  {
+    lastName: "Magnussen",
+    firstName: "Kevin",
+    birthdate: "05-10-1992",
+  },
+  {
+    lastName: "Schumacher",
+    firstName: "Mick",
+    birthdate: "22-03-1999",
+  },
+  {
+    lastName: "Gasly",
+    firstName: "Pierre",
+    birthdate: "07-02-1996",
+  },
+  {
+    lastName: "Tsunoda",
+    firstName: "Yuki",
+    birthdate: "11-05-2000"
+  },
+  {
+    lastName: "Latifi",
+    firstName: "Nicholas",
+    birthdate: "29-06-1995",
+  },
+  {
+    lastName: "Albon",
+    firstName: "Alexander",
+    birthdate: "23-03-1996",
   },
 ];
 

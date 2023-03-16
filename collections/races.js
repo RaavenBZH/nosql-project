@@ -21,12 +21,21 @@ const schema = {
           description: "City of the race, must be a string and is required",
         },
         standings: {
-          bsonType: "array",
+          bsonType: "object",
           description:
-            "Standings of the race, must be an array and is required",
-          items: {
-            bsonType: "string",
-            description: "Name of the driver, must be a string and is required",
+            "Standings of the qualifying, must be an array and is required",
+          required: ["driver", "team"],
+          properties: {
+            name: {
+              bsonType: "string",
+              description:
+                "Driver of the qualifying, must be a string and is required",
+            },
+            team: {
+              bsonType: "string",
+              description:
+                "Team of the qualifying, must be a string and is required",
+            },
           },
         },
         duration: {

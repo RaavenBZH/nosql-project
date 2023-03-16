@@ -9,6 +9,12 @@ const docQualifyings = require("./insertions/qualifyings");
 const collRaces = require("./collections/races");
 const docRaces = require("./insertions/races");
 
+const collSeasons = require("./collections/seasons");
+const docSeasons = require("./insertions/seasons");
+
+constCollSprints = require("./collections/sprints");
+const docSprints = require("./insertions/sprints");
+
 const collTracks = require("./collections/tracks");
 const docTracks = require("./insertions/tracks");
 
