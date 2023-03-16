@@ -26,4 +26,4 @@ const schema = {
   },
 };
 
-modeules.exports = schema;
+module.exports = schema;
