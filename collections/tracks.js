@@ -2,23 +2,24 @@ const schema = {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      description: "collection",
-      required: ["country", "name", "distance"],
+      description: "Tracks collection",
+      required: ["country", "city", "length"],
       properties: {
         _id: {
           bsonType: "objectId",
         },
         country: {
           bsonType: "string",
-          description: "must be a string and is required",
+          description: "Country of the track, must be a string and is required",
         },
-        name: {
+        city: {
           bsonType: "string",
-          description: "must be a string and is required",
+          description: "City of the track, must be a string and is required",
         },
-        distance: {
+        length: {
           bsonType: "int",
-          description: "must be an integer and is required",
+          description:
+            "Length of the track in meters, must be an integer and is required",
         },
       },
     },
