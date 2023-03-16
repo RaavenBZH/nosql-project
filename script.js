@@ -1,16 +1,16 @@
 const mongo = require("mongodb").MongoClient;
 
-const collDrivers = require("collections/drivers");
-const docDrivers = require("insertions/drivers");
+const collDrivers = require("./collections/drivers");
+const docDrivers = require("./insertions/drivers");
 
-const collQualifyings = require("collections/qualifyings");
-const docQualifyings = require("insertions/qualifyings");
+const collQualifyings = require("./collections/qualifyings");
+const docQualifyings = require("./insertions/qualifyings");
 
-const collRaces = require("collections/races");
-const docRaces = require("insertions/races");
+const collRaces = require("./collections/races");
+const docRaces = require("./insertions/races");
 
-const collTracks = require("collections/tracks");
-const docTracks = require("insertions/tracks");
+const collTracks = require("./collections/tracks");
+const docTracks = require("./insertions/tracks");
 
 mongo.connect("mongodb://localhost:27017").then(
   (client) => {
