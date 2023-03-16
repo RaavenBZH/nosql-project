@@ -11,7 +11,7 @@ const insertion = [
       "Alonso",
       "Bottas",
     ],
-    duration: 78,
+    fastestLap: 79,
   },
   {
     year: 2021,
@@ -25,7 +25,7 @@ const insertion = [
       "Alonso",
       "Bottas",
     ],
-    duration: 85,
+    fastestLap: 90,
   },
   {
     year: 2021,
@@ -39,7 +39,7 @@ const insertion = [
       "Alonso",
       "Verstappen",
     ],
-    duration: 89,
+    fastestLap: 96,
   },
   {
     year: 2021,
@@ -53,7 +53,7 @@ const insertion = [
       "Bottas",
       "Ocon",
     ],
-    duration: 90,
+    fastestLap: 86,
   },
   {
     year: 2021,
@@ -67,7 +67,7 @@ const insertion = [
       "Ocon",
       "Bottas",
     ],
-    duration: 81,
+    fastestLap: 71,
   },
   {
     year: 2020,
@@ -81,7 +81,7 @@ const insertion = [
       "Leclerc",
       "Bottas",
     ],
-    duration: 77,
+    fastestLap: 78,
   },
   {
     year: 2020,
@@ -95,7 +95,7 @@ const insertion = [
       "Leclerc",
       "Bottas",
     ],
-    duration: 102,
+    fastestLap: 82,
   },
   {
     year: 2020,
@@ -109,7 +109,7 @@ const insertion = [
       "Bottas",
       "Ocon",
     ],
-    duration: 91,
+    fastestLap: 69,
   },
   {
     year: 2020,
@@ -123,7 +123,7 @@ const insertion = [
       "Verstappen",
       "Bottas",
     ],
-    duration: 97,
+    fastestLap: 75,
   },
   {
     year: 2020,
@@ -137,7 +137,7 @@ const insertion = [
       "Verstappen",
       "Hamilton",
     ],
-    duration: 92,
+    fastestLap: 82,
   },
 ];
 
