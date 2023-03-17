@@ -43,6 +43,11 @@ const schema = {
           description:
             "Duration of the race in minutes, must be an integer and is required",
         },
+        lapsCompleted: {
+          bsonType: "int",
+          description:
+            "Number of laps completed by the winner, must be an integer and is required",
+        },
       },
     },
   },
