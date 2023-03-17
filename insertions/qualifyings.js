@@ -589,8 +589,8 @@ const insertion = [
   },
   {
     year: 2022,
-    country: "Brazil",
-    city: "Sao Paulo",
+    country: "United Arab Emirates",
+    city: "Abu Dhabi",
     standings: [
       {driver: "Verstappen", team: "Red Bull"},
       {driver: "Perez", team: "Red Bull"},
