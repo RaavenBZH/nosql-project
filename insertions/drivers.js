@@ -99,6 +99,11 @@ const insertion = [
     firstName: "Alexander",
     birthdate: "23-03-1996",
   },
+  {
+    lastName: "Hulkenberg",
+    firstName: "Nico",
+    birthdate: "19-08-1987",
+  },
 ];
 
 module.exports = insertion;

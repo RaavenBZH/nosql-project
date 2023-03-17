@@ -23,7 +23,7 @@ La base de données porte sur la **Formule 1**. Nous avons choisi ce sujet car n
 - Classement : objet
     - Pilote : str
     - Équipe : str
-- Meilleur tour : int (en millisecondes)
+- Tour de pôle : int (en millisecondes)
 ```
 
 #### Sprint

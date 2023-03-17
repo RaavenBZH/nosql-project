@@ -4,4 +4,5 @@
     - Drivers
     - Qualfyings
     - Races
+    - Sprints
     - Tracks

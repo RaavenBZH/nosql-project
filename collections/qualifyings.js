@@ -3,7 +3,7 @@ const schema = {
     $jsonSchema: {
       bsonType: "object",
       description: "Qualifyings collection",
-      required: ["year", "country", "city", "standings", "fastestLap"],
+      required: ["year", "country", "city", "standings", "poleLap"],
       properties: {
         _id: {
           bsonType: "objectId",
