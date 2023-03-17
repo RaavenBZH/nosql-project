@@ -3,7 +3,7 @@ const schema = {
     $jsonSchema: {
       bsonType: "object",
       description: "Races collection",
-      required: ["year", "country", "city", "standings", "duration"],
+      required: ["year", "country", "city", "standings", "duration", "lapsCompleted", "fastestDriver"],
       properties: {
         _id: {
           bsonType: "objectId",
@@ -47,6 +47,11 @@ const schema = {
           bsonType: "int",
           description:
             "Number of laps completed by the winner, must be an integer and is required",
+        },
+        fastestDriver: {
+          bsonType: "string",
+          description:
+            "Name of the driver with the fastest lap, must be a string and is required",
         },
       },
     },

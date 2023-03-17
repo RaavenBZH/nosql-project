@@ -27,6 +27,7 @@ const insertion = [
     ],
     duration: 5853584,
     lapsCompleted: 57,
+    fastestDriver: "Leclerc",
   },
   {
     year: 2022,
@@ -56,6 +57,7 @@ const insertion = [
     ],
     duration: 5059293,
     lapsCompleted: 50,
+    fastestDriver: "Leclerc",
   },
   {
     year: 2022,
@@ -85,6 +87,7 @@ const insertion = [
     ],
     duration: 5266548,
     lapsCompleted: 58,
+    fastestDriver: "Leclerc",
   },
   {
     year: 2022,
@@ -114,6 +117,7 @@ const insertion = [
     ],
     duration: 5527986,
     lapsCompleted: 63,
+    fastestDriver: "Verstappen",
   },
   {
     year: 2022,
@@ -143,6 +147,7 @@ const insertion = [
     ],
     duration: 5664258,
     lapsCompleted: 57,
+    fastestDriver: "Verstappen",
   },
   {
     year: 2022,
@@ -172,6 +177,7 @@ const insertion = [
     ],
     duration: 5840475,
     lapsCompleted: 66,
+    fastestDriver: "Perez",
   },
   {
     year: 2022,
@@ -201,6 +207,7 @@ const insertion = [
     ],
     duration: 6990265,
     lapsCompleted: 64,
+    fastestDriver: "Norris",
   },
   {
     year: 2022,
@@ -230,6 +237,7 @@ const insertion = [
     ],
     duration: 5645941,
     lapsCompleted: 51,
+    fastestDriver: "Perez",
   },
   {
     year: 2022,
@@ -259,6 +267,7 @@ const insertion = [
     ],
     duration: 5781757,
     lapsCompleted: 70,
+    fastestDriver: "Sainz",
   },
   {
     year: 2022,
@@ -288,6 +297,7 @@ const insertion = [
     ],
     duration: 8270311,
     lapsCompleted: 52,
+    fastestDriver: "Hamilton",
   },
   {
     year: 2022,
@@ -317,6 +327,7 @@ const insertion = [
     ],
     duration: 5064312,
     lapsCompleted: 71,
+    fastestDriver: "Verstappen",
   },
   {
     year: 2022,
@@ -346,6 +357,7 @@ const insertion = [
     ],
     duration: 5402112,
     lapsCompleted: 53,
+    fastestDriver: "Sainz",
   },
   {
     year: 2022,
@@ -375,6 +387,7 @@ const insertion = [
     ],
     duration: 5975912,
     lapsCompleted: 70,
+    fastestDriver: "Hamilton",
   },
   {
     year: 2022,
@@ -404,6 +417,7 @@ const insertion = [
     ],
     duration: 5152894,
     lapsCompleted: 44,
+    fastestDriver: "Verstappen",
   },
   {
     year: 2022,
@@ -433,6 +447,7 @@ const insertion = [
     ],
     duration: 5802773,
     lapsCompleted: 72,
+    fastestDriver: "Verstappen",
   },
   {
     year: 2022,
@@ -462,6 +477,7 @@ const insertion = [
     ],
     duration: 4827511,
     lapsCompleted: 53,
+    fastestDriver: "Perez",
   },
   {
     year: 2022,
@@ -491,6 +507,7 @@ const insertion = [
     ],
     duration: 7340238,
     lapsCompleted: 59,
+    fastestDriver: "Russell",
   },
   {
     year: 2022,
@@ -520,6 +537,7 @@ const insertion = [
     ],
     duration: 10904004,
     lapsCompleted: 28,
+    fastestDriver: "Zhou",
   },
   {
     year: 2022,
@@ -549,6 +567,7 @@ const insertion = [
     ],
     duration: 6131687,
     lapsCompleted: 56,
+    fastestDriver: "Russell",
   },
   {
     year: 2022,
@@ -578,6 +597,7 @@ const insertion = [
     ],
     duration: 5916729,
     lapsCompleted: 71,
+    fastestDriver: "Russell",
   },
   {
     year: 2022,
@@ -607,6 +627,7 @@ const insertion = [
     ],
     duration: 5914044,
     lapsCompleted: 71,
+    fastestDriver: "Russell",
   },
   {
     year: 2022,
@@ -636,6 +657,7 @@ const insertion = [
     ],
     duration: 5265914,
     lapsCompleted: 58,
+    fastestDriver: "Norris",
   },
 ];
 

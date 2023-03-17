@@ -41,10 +41,10 @@ const schema = {
             },
           },
         },
-        fastestLap: {
+        poleLap: {
           bsonType: "int",
           description:
-            "Time of the fastest lap in seconds, must be an integer and is required",
+            "Time of the pole lap in miliseconds, must be an integer and is required",
         },
       },
     },
