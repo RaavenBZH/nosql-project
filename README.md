@@ -34,7 +34,7 @@ La base de données porte sur la **Formule 1**. Nous avons choisi ce sujet car n
 - Classement : objet
     - Pilote : str
     - Équipe : str
-- Durée : int (en secondes)
+- Durée : int (en millisecondes)
 ```
 
 #### Course
@@ -45,7 +45,7 @@ La base de données porte sur la **Formule 1**. Nous avons choisi ce sujet car n
 - Classement : objet
     - Pilote : str
     - Équipe : str
-- Durée : int (en secondes)
+- Durée : int (en millisecondes)
 ```
 
 #### Pilote
