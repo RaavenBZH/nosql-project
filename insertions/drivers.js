@@ -100,9 +100,9 @@ const insertion = [
     birthdate: "23-03-1996",
   },
   {
-    lastName: "Hulkenberg",
-    firstName: "Nico",
-    birthdate: "19-08-1987",
+    lastName: "De Vries",
+    firstName: "Nyck",
+    birthdate: "06-02-1995",
   },
 ];
 
