@@ -103,4 +103,4 @@ Voir modèle de données ci-dessus.
     2. Sur quel circuit la vitesse moyenne était-elle la plus élevée en course ?
     3. Quel est le top 5 du championnat des pilotes ?
     4. Sur quel Grand Prix un maximum d'équipes ont marqué au moins un point ?
-    5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ? 
+    5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?

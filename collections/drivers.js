@@ -26,7 +26,7 @@ const schema = {
         birthdate: {
           bsonType: "date",
           description:
-            "Birthdate of the driver, must be a date and is required", // format DD-MM-YYYY
+            "Birthdate of the driver, must be a date and is required",
         }
       },
     },

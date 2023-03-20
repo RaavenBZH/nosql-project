@@ -84,3 +84,5 @@ const insertion = [
     duration: 1811307,
   },
 ];
+
+module.exports = insertion;
