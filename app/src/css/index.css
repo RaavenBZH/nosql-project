@@ -1,15 +1,9 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  font-family: "Secular One", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  margin: 0;
 }
 
 .card {
@@ -17,7 +11,21 @@ code {
   cursor: pointer;
 }
 
-.cards:hover {
+.card-img {
+  opacity: 85%;
+}
+
+.card-title {
+  font-family: "Formula1-Bold";
+  font-size: 2.5rem;
+}
+
+.card:hover {
   box-shadow: 5px 6px 6px 2px #e9ecef;
-  transform: scale(1.1);
+  transform: scale(1.02);
+}
+
+.card:hover .card-title {
+  transition: all 0.1s ease;
+  font-size: 3rem;
 }

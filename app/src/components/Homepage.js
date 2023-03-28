@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import drivers from "../assets/drivers.jpg";
-import qualifyings from "../assets/qualifyings.jpg";
-import races from "../assets/races.jpg";
-import seasons from "../assets/seasons.jpg";
-import sprints from "../assets/sprints.jpg";
-import tracks from "../assets/tracks.jpg";
+import drivers from "../assets/img/drivers.jpg";
+import qualifyings from "../assets/img/qualifyings.jpg";
+import races from "../assets/img/races.jpg";
+import seasons from "../assets/img/seasons.jpg";
+import sprints from "../assets/img/sprints.jpg";
+import tracks from "../assets/img/tracks.jpg";
 
 export default function Homepage() {
   const navigate = useNavigate();

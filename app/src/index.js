@@ -3,6 +3,12 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
+import "./assets/fonts/Formula1-Regular.ttf";
+import "./assets/fonts/Formula1-Black.ttf";
+import "./assets/fonts/Formula1-Bold.ttf";
+import "./assets/fonts/Formula1-Wide.ttf";
+
+import "./css/fonts.css";
 import "./css/index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
