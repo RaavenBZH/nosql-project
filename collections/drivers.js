@@ -27,7 +27,7 @@ const schema = {
           bsonType: "date",
           description:
             "Birthdate of the driver, must be a date and is required",
-        }
+        },
       },
     },
   },

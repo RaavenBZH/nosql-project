@@ -19,13 +19,19 @@ export default class Drivers extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return (
+        <main class="py-3 my-3">
+          <div class="container d-flex justify-content-center">
+            <div class="spinner-grow text-danger" role="status"></div>
+          </div>
+        </main>
+      );
     }
 
     return (
       <main class="py-3 my-3">
         <div class="container">
-          <table class="table table-striped table-hover">
+          <table class="table table-hover table-responsive">
             <thead>
               <tr>
                 <th scope="col">#</th>
