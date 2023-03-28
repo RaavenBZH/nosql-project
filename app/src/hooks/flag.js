@@ -1,4 +1,4 @@
-const context = require.context("../assets/img/flags", true, /.png$/);
+const context = require.context("../assets/img/flags", true, /.svg$/);
 
 const flags = {};
 context.keys().forEach((key) => {
