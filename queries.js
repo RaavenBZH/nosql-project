@@ -20,9 +20,7 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
           memo.push(winner);
         }
       });
-    })
-    // Result
-    .then(() => {
+    }).then(() => {
       console.log("Q4.1 : Combien de pilotes différents ont gagné une course ?");
       console.log(`>>> ${count} (${memo})`);
       console.log();
@@ -45,10 +43,7 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
       docs.forEach((doc) => {
         sum += doc.length;
       });
-    })
-
-    // Result
-    .then(() => {
+    }).then(() => {
       console.log(
         "Q4.2 : Quelle est la longueur moyenne d'un circuit en 2022 (en mètres) ?"
       );
@@ -96,10 +91,7 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
       } else {
         count = driver;
       }
-    })
-
-    // Result
-    .then(() => {
+    }).then(() => {
       console.log(
         "Q4.3 : Quel pilote a obtenu le plus de pôles positions (1er en qualifications) ?"
       );
@@ -127,10 +119,7 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
           }
         });
       });
-    })
-
-    // Result
-    .then(() => {
+    }).then(() => {
       console.log("Q4.4 : Combien de podiums l'équipe Ferrari a-t-elle obtenu ?");
       console.log(">>> " + count);
       console.log();
@@ -161,16 +150,9 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
 
         ages.push(age);
       });
-    })
-
-    // Result
-    .then(() => {
+    }).then(() => {
       console.log("Q4.5 : Quel est l'âge moyen des pilotes ?");
-      console.log(
-        ">>> " +
-        (ages.reduce((a, b) => a + b) / ages.length).toFixed(2) +
-        " ans"
-      );
+      console.log(">>> " + (ages.reduce((a, b) => a + b) / ages.length).toFixed(2) + " ans");
       console.log();
     });
 });
@@ -189,12 +171,11 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
   db.collection("races").updateMany({ year: 2022 }, { $set: { year: 2021 } });
   db.collection("sprints").updateMany({ year: 2022 }, { $set: { year: 2021 } });
   db.collection("seasons").updateMany({ year: 2022 }, { $set: { year: 2021 } });
-})
-  .then(() => {
-    console.log("Q5.1 : Modification des données pour que l'année soit 2021");
-    console.log(">>> Done");
-    console.log();
-  });
+}).then(() => {
+  console.log("Q5.1 : Modification des données pour que l'année soit 2021");
+  console.log(">>> Done");
+  console.log();
+});
 
 /////////////////////////////////////////////////////////////
 // 5.2. Échanger l'équipe des pilotes Hamilton et Verstappen.
@@ -250,12 +231,11 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
         );
       });
     });
-})
-  .then(() => {
-    console.log("Q5.2 : Échanger l'équipe des pilotes Hamilton et Verstappen.");
-    console.log(">>> Done");
-    console.log();
-  });
+}).then(() => {
+  console.log("Q5.2 : Échanger l'équipe des pilotes Hamilton et Verstappen.");
+  console.log(">>> Done");
+  console.log();
+});
 
 ///////////////////////////////////////////////////////////////////
 // 5.3. Déclasser Carlos Sainz de 5 places pour la course de Miami.
@@ -328,10 +308,11 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
         db.collection(collection).deleteMany({ country: pays })
       })
     })
-    console.log("Q5.4 : Supprimer les Grand Prix dont les pays sont représentés par plusieurs circuits.");
-    console.log(">>> Done");
-    console.log();
   })
+}).then(() => {
+  console.log("Q5.4 : Supprimer les Grand Prix dont les pays sont représentés par plusieurs circuits.");
+  console.log(">>> Done");
+  console.log();
 })
 
 /////////////////////////////////////////////////////////
@@ -371,6 +352,36 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
 ///////////////////////////////////////////////////////////////////////////
 // 6.1. Combien de podiums le champion en titre par équipes a-t-il obtenu ?
 ///////////////////////////////////////////////////////////////////////////
+mongo.connect("mongodb://localhost:27017").then((client) => {
+  let db = client.db("f1");
+
+  var count = 0
+  db.collection("races").aggregate([
+    {
+      $lookup: {
+        from: "seasons",
+        localField: "year",
+        foreignField: "year",
+        as: "theSeason",
+      },
+    }
+  ])
+    .toArray()
+    .then((results) => {
+      results.forEach((result) => {
+        var champion = result.theSeason[0].defendingTeamChampion;
+        for (let i = 0; i < 3; i++) {
+          if (result.standings[i].team == champion) {
+            count++;
+          }
+        }
+      });
+    }).then(() => {
+      console.log("Q6.1 : Combien de podiums le champion en titre par équipes a-t-il obtenu ?");
+      console.log(">>> " + count + " podiums");
+      console.log();
+    });
+})
 
 /////////////////////////////////////////////////////////////////////////////////
 // 6.2. Sur quel circuit la vitesse moyenne était-elle la plus élevée en course ?
@@ -423,14 +434,228 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
     .catch((err) => console.error(err));
 });
 
-///////////////////////////////////////////////////////////////////////////////
-// 6.3. Sur quel Grand Prix un maximum d'équipes ont marqué au moins un point ?
-///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+// 6.3. Qui a gagné le plus de postions entre la qualification et la course en France ?
+///////////////////////////////////////////////////////////////////////////////////////
+mongo.connect("mongodb://localhost:27017").then((client) => {
+  let db = client.db("f1");
+
+  var max = 0;
+  var pilotes = [];
+  db.collection("races").aggregate([
+    {
+      $match: {
+        city: "Le Castellet"
+      }
+    },
+    {
+      $lookup: {
+        from: "qualifyings",
+        localField: "city",
+        foreignField: "city",
+        as: "theQuali",
+      },
+    }
+  ])
+    .toArray()
+    .then((result) => {
+
+      var qualif = result[0].theQuali[0].standings;
+      var course = result[0].standings;
+      var pilote;
+
+      for (var i = 0; i < qualif.length; i++) {
+        pilote = qualif[i].driver;
+        for (var j = 0; j < course.length; j++) {
+          if (course[j].driver == pilote) {
+            if (i - j > max) {
+              max = i - j;
+              pilotes = [];
+              pilotes.push(pilote);
+            } else {
+              if (i - j == max) {
+                pilotes.push(pilote);
+              }
+            }
+          }
+        }
+      }
+      if (pilotes.length == 1) {
+        pilotes = pilotes[0];
+      }
+    }).then(() => {
+      console.log("Q6.3 : Qui a gagné le plus de positions entre la qualification et la course en France ?");
+      console.log(`>>> ${pilotes} a/ont gagné ${max} postions entre la qualification et la course.`);
+      console.log();
+    });
+})
 
 ///////////////////////////////////////////////////////////
 // 6.4. Quel est le classement du championnat des pilotes ?
 ///////////////////////////////////////////////////////////
+mongo.connect("mongodb://localhost:27017").then((client) => {
+  let db = client.db("f1");
+
+  var general_standings = {};
+
+  db.collection("races").aggregate([
+    {
+      $lookup: {
+        from: "sprints",
+        localField: "city",
+        foreignField: "city",
+        as: "theSprint"
+      },
+    },
+    {
+      $lookup: {
+        from: "seasons",
+        localField: "year",
+        foreignField: "year",
+        as: "theSeason"
+      },
+    },
+  ])
+    .toArray()
+    .then((results) => {
+
+      results.forEach((document) => {
+        var theRace = document.standings;
+        var theSprint = document.theSprint[0];
+        if (theSprint != undefined) theSprint = theSprint.standings;
+
+        var points_race = document.theSeason[0].racePointsSystem;
+        var points_sprint = document.theSeason[0].sprintPointSystem;
+
+        var driver;
+        /*
+         The drivers from the top 10 are awarded some points according to the points system.
+         The driver who set the fastest lap is awarded 1 point if he is in the top 10.
+        */
+        for (let i = 0; i < theRace.length; i++) {
+          driver = theRace[i].driver;
+          if (general_standings[driver] == undefined) general_standings[driver] = points_race[i];
+          else general_standings[driver] += points_race[i];
+
+          if (driver == document.fastestDriver && i < 10) {
+            if (general_standings[driver] == undefined) general_standings[driver] = 1;
+            else general_standings[driver] += 1;
+          }
+        }
+
+        /*
+          The drivers from the top 8 are awarded some points according to the points system.
+        */
+        if (theSprint != undefined) {
+          for (let i = 0; i < theSprint.length; i++) {
+            driver = theSprint[i].driver;
+            if (general_standings[driver] == undefined) general_standings[driver] = points_sprint[i];
+            else general_standings[driver] += points_sprint[i];
+          }
+        }
+
+      });
+
+      const sortedObj = Object.entries(general_standings).sort(([, a], [, b]) => b - a);
+      general_standings = Object.fromEntries(sortedObj);
+
+      console.log("6.4. Quel est le classement du championnat des pilotes ?")
+      console.log(">>> Le classement du championnat des pilotes est le suivant :")
+      console.log(general_standings)
+      console.log();
+    })
+});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 6.5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+mongo.connect("mongodb://localhost:27017").then((client) => {
+  let db = client.db("f1");
+
+  var general_standings = {};
+
+  db.collection("races").aggregate([
+    {
+      $project: {
+        city: 1,
+        year: 1,
+        standings: {
+          $filter: {
+            input: "$standings",
+            as: "standing",
+            cond: { $ne: ["$$standing.team", "Red Bull"] }
+          }
+        },
+        fastestDriver: 1,
+        racePointsSystem: 1,
+        sprintPointSystem: 1,
+      }
+    },
+    {
+      $lookup: {
+        from: "sprints",
+        localField: "city",
+        foreignField: "city",
+        as: "theSprint"
+      }
+    },
+    {
+      $lookup: {
+        from: "seasons",
+        localField: "year",
+        foreignField: "year",
+        as: "theSeason"
+      }
+    }
+  ])
+
+    .toArray()
+    .then((results) => {
+
+      results.forEach((document) => {
+        var theRace = document.standings;
+        var theSprint = document.theSprint[0];
+        if (theSprint != undefined) theSprint = theSprint.standings;
+
+        var points_race = document.theSeason[0].racePointsSystem;
+        var points_sprint = document.theSeason[0].sprintPointSystem;
+
+        var driver;
+        /*
+         The drivers from the top 10 are awarded some points according to the points system.
+         The driver who set the fastest lap is awarded 1 point if he is in the top 10.
+        */
+        for (let i = 0; i < theRace.length; i++) {
+          driver = theRace[i].driver;
+          team = theRace[i].team;
+          if (general_standings[team] == undefined) general_standings[team] = points_race[i];
+          else general_standings[team] += points_race[i];
+
+          if (driver == document.fastestDriver && i < 10) {
+            if (general_standings[team] == undefined) general_standings[team] = 1;
+            else general_standings[team] += 1;
+          }
+        }
+
+        /*
+          The drivers from the top 8 are awarded some points according to the points system.
+        */
+        if (theSprint != undefined) {
+          for (let i = 0; i < theSprint.length; i++) {
+            team = theSprint[i].team;
+            if (general_standings[team] == undefined) general_standings[team] = points_sprint[i];
+            else general_standings[team] += points_sprint[i];
+          }
+        }
+
+      });
+
+      const sortedObj = Object.entries(general_standings).sort(([, a], [, b]) => b - a);
+      general_standings = Object.fromEntries(sortedObj);
+
+      console.log("6.5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?")
+      console.log(">>> Le classement du championnat par équipe serait le suivant :")
+      console.log(general_standings)
+      console.log();
+    })
+});
