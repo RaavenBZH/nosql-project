@@ -29,8 +29,3 @@ body {
   box-shadow: 5px 6px 6px 2px #e9ecef;
   transform: scale(1.02);
 }
-
-.card:hover .card-title {
-  transition: all 0.1s ease;
-  font-size: 3rem;
-}

@@ -40,7 +40,7 @@ export default class Drivers extends React.Component {
               <div class="col-sm-3" key={key}>
                 <div
                   class="card"
-                  onClick={this.expandInfo(res)}
+                  onClick={() => this.expandInfo(res)}
                   data-bs-toggle="modal"
                   data-bs-target="#driverCard"
                 >
