@@ -12,6 +12,26 @@ export default class DriversForm extends React.Component {
   componentDidMount() {
     this.setState({ loading: false });
   }
+  eventSubmit(event) {
+    event.preventDefault();
+
+    const { lastName, firstName, team, dob } = event.target.elements;
+
+    let args = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        lastName: lastName.value,
+        firstName: firstName.value,
+        team: team.value,
+        birthdate: dob.value,
+      }),
+    };
+
+    fetch(`${api_host}/post/drivers`, args)
+      .then((response) => response.json())
+      .catch((err) => console.error(err));
+  }
   render() {
     if (this.state.loading) {
       return (
@@ -37,6 +57,38 @@ export default class DriversForm extends React.Component {
             </a>
           </li>
         </ul>
+
+        <div class="container my-3">
+          <form onSubmit={this.eventSubmit}>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">
+                Last Name
+              </label>
+              <input type="text" class="form-control" id="lastName" />
+            </div>
+            <div class="mb-3">
+              <label for="firstName" class="form-label">
+                First Name
+              </label>
+              <input type="text" class="form-control" id="firstName" />
+            </div>
+            <div class="mb-3">
+              <label for="team" class="form-label">
+                Team
+              </label>
+              <input type="text" class="form-control" id="team" />
+            </div>
+            <div class="mb-3">
+              <label for="dob" class="form-label">
+                Birthdate
+              </label>
+              <input type="text" class="form-control" id="dob" />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
       </main>
     );
   }
