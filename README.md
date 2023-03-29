@@ -93,7 +93,7 @@ Voir modèle de données ci-dessus.
 
     1. Modifier les données pour que l'année soit 2021.
     2. Échanger l'équipe des pilotes Hamilton et Verstappen.
-    3. Déclasser les pilotes de l'équipe Red Bull de 5 places sur les circuits des États-Unis.
+    3. Déclasser Carlos Sainz de 5 places pour la course de Miami.
     4. Supprimer les Grand Prix dont les pays sont représentés par plusieurs circuits.
     5. Échangez les positions des coéquipiers en sprint.
 
@@ -101,6 +101,6 @@ Voir modèle de données ci-dessus.
 
     1. Combien de podiums le champion en titre par équipes a-t-il obtenu ?
     2. Sur quel circuit la vitesse moyenne était-elle la plus élevée en course ?
-    3. Quel est le top 5 du championnat des pilotes ?
-    4. Sur quel Grand Prix un maximum d'équipes ont marqué au moins un point ?
+    3. Sur quel Grand Prix un maximum d'équipes ont marqué au moins un point ?
+    4. Quel est le classement du championnat des pilotes ?
     5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?
