@@ -101,6 +101,6 @@ Voir modèle de données ci-dessus.
 
     1. Combien de podiums le champion en titre par équipes a-t-il obtenu ?
     2. Sur quel circuit la vitesse moyenne était-elle la plus élevée en course ?
-    3. Sur quel Grand Prix un maximum d'équipes ont marqué au moins un point ?
+    3. Qui a gagné le plus de postions entre la qualification et la course en France ?
     4. Quel est le classement du championnat des pilotes ?
     5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?
