@@ -13,7 +13,7 @@ export default function Homepage() {
   const goTo = (page) => navigate("/" + page);
 
   return (
-    <main class="py-3 my-3">
+    <main class="p-3 m-3">
       <div class="container text-center">
         <div class="row row-cols-sm-2 d-flex align-items-center g-3">
           <div class="col-sm-6">
