@@ -15,7 +15,7 @@ export default class DriversForm extends React.Component {
   eventSubmit(event) {
     event.preventDefault();
 
-    const { lastName, firstName, team, dob } = event.target.elements;
+    let { lastName, firstName, team, dob } = event.target.elements;
 
     let args = {
       method: "POST",
@@ -60,29 +60,41 @@ export default class DriversForm extends React.Component {
 
         <div class="container my-3">
           <form onSubmit={this.eventSubmit}>
-            <div class="mb-3">
-              <label for="lastName" class="form-label">
-                Last Name
-              </label>
-              <input type="text" class="form-control" id="lastName" />
-            </div>
-            <div class="mb-3">
-              <label for="firstName" class="form-label">
-                First Name
-              </label>
-              <input type="text" class="form-control" id="firstName" />
+            <div class="row mb-3">
+              <div class="col">
+                <label for="lastName" class="form-label">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  required
+                />
+              </div>
+              <div class="col">
+                <label for="firstName" class="form-label">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstName"
+                  required
+                />
+              </div>
             </div>
             <div class="mb-3">
               <label for="team" class="form-label">
                 Team
               </label>
-              <input type="text" class="form-control" id="team" />
+              <input type="text" class="form-control" id="team" required />
             </div>
             <div class="mb-3">
               <label for="dob" class="form-label">
                 Birthdate
               </label>
-              <input type="text" class="form-control" id="dob" />
+              <input type="text" class="form-control" id="dob" required />
             </div>
             <button type="submit" class="btn btn-primary">
               Submit
