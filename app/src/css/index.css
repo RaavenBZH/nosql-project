@@ -20,6 +20,11 @@ body {
   font-size: 2.5rem;
 }
 
+.card-subtitle {
+  font-family: "Formula1-Regular";
+  font-size: 2rem;
+}
+
 .card:hover {
   box-shadow: 5px 6px 6px 2px #e9ecef;
   transform: scale(1.02);

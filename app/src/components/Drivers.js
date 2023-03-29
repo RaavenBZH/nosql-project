@@ -7,6 +7,7 @@ export default class Drivers extends React.Component {
 
     this.state = {
       loading: true,
+      driverCard: [],
     };
   }
   componentDidMount() {
@@ -16,6 +17,9 @@ export default class Drivers extends React.Component {
       .catch((err) => {
         console.error(err);
       });
+  }
+  expandInfo(driver) {
+    this.setState({ driverCard: driver });
   }
   render() {
     if (this.state.loading) {
@@ -30,29 +34,50 @@ export default class Drivers extends React.Component {
 
     return (
       <main class="py-3 my-3">
-        <div class="container">
-          <table class="table table-hover table-responsive">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Team</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.drivers.map((res, key) => {
-                return (
-                  <tr key={key}>
-                    <th scope="row">{key + 1}</th>
-                    <td>{res.firstName}</td>
-                    <td>{res.lastName}</td>
-                    <td>{res.team}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div class="row row-cols-sm-4 d-flex align-items-center g-3">
+          {this.state.drivers.map((res, key) => {
+            return (
+              <div class="col-sm-3" key={key}>
+                <div
+                  class="card"
+                  onClick={this.expandInfo(res)}
+                  data-bs-toggle="modal"
+                  data-bs-target="#driverCard"
+                >
+                  <div class="card-body d-flex justify-content-center align-items-center">
+                    <h5 class="card-subtitle">{res.firstName}</h5>
+                    <h5 class="card-title">{res.lastName}</h5>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div class="modal" id="driverCard" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  {this.state.driverCard.firstName}{" "}
+                  {this.state.driverCard.lastName}
+                </h5>
+              </div>
+              <div class="modal-body">
+                <p>{this.state.driverCard.team}</p>
+                <p>{this.state.driverCard.birthdate}</p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     );
