@@ -654,7 +654,7 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
       general_standings = Object.fromEntries(sortedObj);
 
       console.log("6.5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?")
-      console.log(">>> Le classement du championnat par équipe serait suivant :")
+      console.log(">>> Le classement du championnat par équipe serait le suivant :")
       console.log(general_standings)
       console.log();
     })
