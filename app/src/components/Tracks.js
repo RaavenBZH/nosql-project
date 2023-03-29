@@ -1,6 +1,6 @@
 import React from "react";
 import { api_host } from "../config";
-import flag from "../hooks/flag";
+import useFlags from "../hooks/useFlags";
 
 export default class Tracks extends React.Component {
   constructor(props) {
@@ -19,8 +19,8 @@ export default class Tracks extends React.Component {
       });
   }
   getFlag(country) {
-    if (flag[country.slice(0, 2).toLowerCase()] != null) {
-      return flag[country.slice(0, 2).toLowerCase()];
+    if (useFlags[country.slice(0, 2).toLowerCase()] != null) {
+      return useFlags[country.slice(0, 2).toLowerCase()];
     } else {
       return "n/a";
     }
