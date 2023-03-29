@@ -70,7 +70,7 @@ const insertion = [
     length: 7004,
   },
   {
-    country: "Neatherlands",
+    country: "Netherlands",
     city: "Zandvoort",
     length: 4259,
   },
