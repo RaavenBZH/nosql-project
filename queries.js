@@ -366,21 +366,21 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
       },
     }
   ])
-  .toArray()
-  .then((results) => {
-    results.forEach((result) => {
+    .toArray()
+    .then((results) => {
+      results.forEach((result) => {
         var champion = result.theSeason[0].defendingTeamChampion;
         for (let i = 0; i < 3; i++) {
-            if (result.standings[i].team == champion) {
-                count++;
-            }
+          if (result.standings[i].team == champion) {
+            count++;
+          }
         }
+      });
+    }).then(() => {
+      console.log("Q6.1 : Combien de podiums le champion en titre par équipes a-t-il obtenu ?");
+      console.log(">>> " + count + " podiums");
+      console.log();
     });
-  }).then(() => {
-    console.log("Q6.1 : Combien de podiums le champion en titre par équipes a-t-il obtenu ?");
-    console.log(">>> " + count + " podiums");
-    console.log();
-  });
 })
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -445,7 +445,7 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
   db.collection("races").aggregate([
     {
       $match: {
-        city : "Le Castellet"
+        city: "Le Castellet"
       }
     },
     {
@@ -457,37 +457,37 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
       },
     }
   ])
-  .toArray()
-  .then((result) => {
+    .toArray()
+    .then((result) => {
 
-    var qualif = result[0].theQuali[0].standings;
-    var course = result[0].standings;
-    var pilote;
-    
-    for (var i = 0; i < qualif.length; i++) {
-      pilote = qualif[i].driver;
-      for (var j = 0; j < course.length; j++) {
-        if (course[j].driver == pilote) {
-          if (i-j > max) {
-            max = i-j;
-            pilotes = [];
-            pilotes.push(pilote);
-          } else {
-            if (i-j == max) {
+      var qualif = result[0].theQuali[0].standings;
+      var course = result[0].standings;
+      var pilote;
+
+      for (var i = 0; i < qualif.length; i++) {
+        pilote = qualif[i].driver;
+        for (var j = 0; j < course.length; j++) {
+          if (course[j].driver == pilote) {
+            if (i - j > max) {
+              max = i - j;
+              pilotes = [];
               pilotes.push(pilote);
+            } else {
+              if (i - j == max) {
+                pilotes.push(pilote);
+              }
             }
           }
         }
       }
-    }
-    if (pilotes.length == 1) {
-      pilotes = pilotes[0];
-    }
-  }).then(() => {
-    console.log("Q6.3 : Qui a gagné le plus de positions entre la qualification et la course en France ?");
-    console.log(`>>> ${pilotes} a/ont gagné ${max} postions entre la qualification et la course.`);
-    console.log();
-  });
+      if (pilotes.length == 1) {
+        pilotes = pilotes[0];
+      }
+    }).then(() => {
+      console.log("Q6.3 : Qui a gagné le plus de positions entre la qualification et la course en France ?");
+      console.log(`>>> ${pilotes} a/ont gagné ${max} postions entre la qualification et la course.`);
+      console.log();
+    });
 })
 
 ///////////////////////////////////////////////////////////
@@ -516,54 +516,54 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
       },
     },
   ])
-  .toArray()
-  .then((results) => {
-    
-    results.forEach((document) => {
-      var theRace = document.standings;
-      var theSprint = document.theSprint[0];
-      if (theSprint != undefined) theSprint = theSprint.standings;
+    .toArray()
+    .then((results) => {
 
-      var points_race = document.theSeason[0].racePointsSystem;
-      var points_sprint = document.theSeason[0].sprintPointSystem;
+      results.forEach((document) => {
+        var theRace = document.standings;
+        var theSprint = document.theSprint[0];
+        if (theSprint != undefined) theSprint = theSprint.standings;
 
-      var driver;
-      /*
-       The drivers from the top 10 are awarded some points according to the points system.
-       The driver who set the fastest lap is awarded 1 point if he is in the top 10.
-      */
-      for (let i = 0 ; i < theRace.length ; i++) {
-        driver = theRace[i].driver;
-        if (general_standings[driver] == undefined) general_standings[driver] = points_race[i];
-        else general_standings[driver] += points_race[i];
-        
-        if (driver == document.fastestDriver && i < 10) {
-          if (general_standings[driver] == undefined) general_standings[driver] = 1;
-          else general_standings[driver] += 1; 
+        var points_race = document.theSeason[0].racePointsSystem;
+        var points_sprint = document.theSeason[0].sprintPointSystem;
+
+        var driver;
+        /*
+         The drivers from the top 10 are awarded some points according to the points system.
+         The driver who set the fastest lap is awarded 1 point if he is in the top 10.
+        */
+        for (let i = 0; i < theRace.length; i++) {
+          driver = theRace[i].driver;
+          if (general_standings[driver] == undefined) general_standings[driver] = points_race[i];
+          else general_standings[driver] += points_race[i];
+
+          if (driver == document.fastestDriver && i < 10) {
+            if (general_standings[driver] == undefined) general_standings[driver] = 1;
+            else general_standings[driver] += 1;
+          }
         }
-      }
 
-      /*
-        The drivers from the top 8 are awarded some points according to the points system.
-      */
-      if (theSprint != undefined) {
-        for (let i = 0 ; i < theSprint.length ; i++) {
-          driver = theSprint[i].driver;
-          if (general_standings[driver] == undefined) general_standings[driver] = points_sprint[i];
-          else general_standings[driver] += points_sprint[i];
+        /*
+          The drivers from the top 8 are awarded some points according to the points system.
+        */
+        if (theSprint != undefined) {
+          for (let i = 0; i < theSprint.length; i++) {
+            driver = theSprint[i].driver;
+            if (general_standings[driver] == undefined) general_standings[driver] = points_sprint[i];
+            else general_standings[driver] += points_sprint[i];
+          }
         }
-      }
 
-    });
+      });
 
-    const sortedObj = Object.entries(general_standings).sort(([, a], [, b]) => b - a);
-    general_standings = Object.fromEntries(sortedObj);
+      const sortedObj = Object.entries(general_standings).sort(([, a], [, b]) => b - a);
+      general_standings = Object.fromEntries(sortedObj);
 
-    console.log("6.4. Quel est le classement du championnat des pilotes ?")
-    console.log(">>> Le classement du championnat des pilotes est le suivant :")
-    console.log(general_standings)
-    console.log();
-  })
+      console.log("6.4. Quel est le classement du championnat des pilotes ?")
+      console.log(">>> Le classement du championnat des pilotes est le suivant :")
+      console.log(general_standings)
+      console.log();
+    })
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -609,53 +609,53 @@ mongo.connect("mongodb://localhost:27017").then((client) => {
     }
   ])
 
-  .toArray()
-  .then((results) => {
-    
-    results.forEach((document) => {
-      var theRace = document.standings;
-      var theSprint = document.theSprint[0];
-      if (theSprint != undefined) theSprint = theSprint.standings;
+    .toArray()
+    .then((results) => {
 
-      var points_race = document.theSeason[0].racePointsSystem;
-      var points_sprint = document.theSeason[0].sprintPointSystem;
+      results.forEach((document) => {
+        var theRace = document.standings;
+        var theSprint = document.theSprint[0];
+        if (theSprint != undefined) theSprint = theSprint.standings;
 
-      var driver;
-      /*
-       The drivers from the top 10 are awarded some points according to the points system.
-       The driver who set the fastest lap is awarded 1 point if he is in the top 10.
-      */
-      for (let i = 0 ; i < theRace.length ; i++) {
-        driver = theRace[i].driver;
-        team = theRace[i].team;
-        if (general_standings[team] == undefined) general_standings[team] = points_race[i];
-        else general_standings[team] += points_race[i];
-        
-        if (driver == document.fastestDriver && i < 10) {
-          if (general_standings[team] == undefined) general_standings[team] = 1;
-          else general_standings[team] += 1; 
+        var points_race = document.theSeason[0].racePointsSystem;
+        var points_sprint = document.theSeason[0].sprintPointSystem;
+
+        var driver;
+        /*
+         The drivers from the top 10 are awarded some points according to the points system.
+         The driver who set the fastest lap is awarded 1 point if he is in the top 10.
+        */
+        for (let i = 0; i < theRace.length; i++) {
+          driver = theRace[i].driver;
+          team = theRace[i].team;
+          if (general_standings[team] == undefined) general_standings[team] = points_race[i];
+          else general_standings[team] += points_race[i];
+
+          if (driver == document.fastestDriver && i < 10) {
+            if (general_standings[team] == undefined) general_standings[team] = 1;
+            else general_standings[team] += 1;
+          }
         }
-      }
 
-      /*
-        The drivers from the top 8 are awarded some points according to the points system.
-      */
-      if (theSprint != undefined) {
-        for (let i = 0 ; i < theSprint.length ; i++) {
-          team = theSprint[i].team;
-          if (general_standings[team] == undefined) general_standings[team] = points_sprint[i];
-          else general_standings[team] += points_sprint[i];
+        /*
+          The drivers from the top 8 are awarded some points according to the points system.
+        */
+        if (theSprint != undefined) {
+          for (let i = 0; i < theSprint.length; i++) {
+            team = theSprint[i].team;
+            if (general_standings[team] == undefined) general_standings[team] = points_sprint[i];
+            else general_standings[team] += points_sprint[i];
+          }
         }
-      }
 
-    });
+      });
 
-    const sortedObj = Object.entries(general_standings).sort(([, a], [, b]) => b - a);
-    general_standings = Object.fromEntries(sortedObj);
+      const sortedObj = Object.entries(general_standings).sort(([, a], [, b]) => b - a);
+      general_standings = Object.fromEntries(sortedObj);
 
-    console.log("6.5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?")
-    console.log(">>> Le classement du championnat par équipe serait suivant :")
-    console.log(general_standings)
-    console.log();
-  })
+      console.log("6.5. Si l'équipe Red Bull était déclassée de toutes les sessions, qui aurait gagné le championnat par équipe ?")
+      console.log(">>> Le classement du championnat par équipe serait suivant :")
+      console.log(general_standings)
+      console.log();
+    })
 });
