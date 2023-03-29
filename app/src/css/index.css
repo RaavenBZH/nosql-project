@@ -15,12 +15,14 @@ body {
   opacity: 85%;
 }
 
-.card-title {
+.card-title,
+.modal-title {
   font-family: "Formula1-Bold";
   font-size: 2.5rem;
 }
 
-.card-subtitle {
+.card-subtitle,
+.modal-subtitle {
   font-family: "Formula1-Regular";
   font-size: 2rem;
 }

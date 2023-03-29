@@ -28,7 +28,7 @@ export default class Tracks extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <main class="py-3 my-3">
+        <main class="p-3 m-3">
           <div class="container d-flex justify-content-center">
             <div class="spinner-grow text-danger" role="status"></div>
           </div>
@@ -37,8 +37,21 @@ export default class Tracks extends React.Component {
     }
 
     return (
-      <main class="py-3 my-3">
-        <div class="container">
+      <main class="p-3 m-3">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/tracks">
+              Explore
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tracks/form">
+              Add
+            </a>
+          </li>
+        </ul>
+
+        <div class="container my-3">
           <table class="table table-hover table-responsive">
             <thead>
               <tr>

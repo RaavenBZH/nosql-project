@@ -5,7 +5,7 @@ context.keys().forEach((key) => {
   const driver = key
     .split("./")
     .pop()
-    .substring(0, key.length - 6);
+    .substring(0, key.length - 7);
   useDrivers[driver] = context(key);
 });
 
