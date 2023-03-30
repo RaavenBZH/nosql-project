@@ -1,6 +1,6 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
+import Carousel from "react-bootstrap/Carousel";
 
 import drivers from "../assets/img/drivers.jpg";
 import qualifyings from "../assets/img/qualifyings.jpg";
@@ -28,8 +28,8 @@ export default function Homepage() {
             alt="Slide 1"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Slide 1</h3>
+            <p>Some text</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={5000}>
@@ -40,8 +40,8 @@ export default function Homepage() {
             alt="Slide 2"
           />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Slide 2</h3>
+            <p>Some text</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={5000}>
@@ -52,10 +52,8 @@ export default function Homepage() {
             alt="Slide 3"
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <h3>Slide 3</h3>
+            <p>Some text</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
