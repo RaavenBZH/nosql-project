@@ -9,25 +9,44 @@ body {
 .card {
   transition: all 0.2s ease;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.card-img {
-  opacity: 85%;
+.card-title {
+  -webkit-text-stroke: 1.5px black;
 }
 
 .card-title,
 .modal-title {
   font-family: "Formula1-Bold";
   font-size: 2.5rem;
+  text-transform: uppercase;
 }
 
 .card-subtitle,
 .modal-subtitle {
+  position: relative;
   font-family: "Formula1-Regular";
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .card:hover {
   box-shadow: 5px 6px 6px 2px #e9ecef;
   transform: scale(1.02);
+}
+
+.card:hover .card-img {
+  transition: all 0.2s ease;
+  opacity: 85%;
+}
+
+.card:hover .card-title {
+  transition: all 0.2s ease;
+  font-size: 3rem;
+}
+
+.card-content {
+  transition: all 0.2s ease-in-out;
+  text-align: center;
 }

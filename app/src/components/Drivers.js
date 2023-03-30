@@ -9,6 +9,7 @@ export default class Drivers extends React.Component {
 
     this.state = {
       loading: true,
+      isHover: null,
       driverCard: [],
     };
   }
@@ -74,12 +75,27 @@ export default class Drivers extends React.Component {
                 <div
                   class="card"
                   onClick={() => this.expandInfo(res)}
+                  onMouseEnter={() => this.setState({ isHover: key })}
+                  onMouseLeave={() => this.setState({ isHover: null })}
                   data-bs-toggle="modal"
                   data-bs-target="#driverCard"
                 >
                   <div class="card-body d-flex justify-content-center align-items-center">
-                    <h5 class="card-subtitle">{res.firstName}</h5>
-                    <h5 class="card-title">{res.lastName}</h5>
+                    <img
+                      src={this.getDriver(res.lastName)}
+                      height="150px"
+                      alt="driver"
+                    ></img>
+                    {this.state.isHover === key ? (
+                      <div class="card-content">
+                        <h5 class="card-title">{res.lastName}</h5>
+                      </div>
+                    ) : (
+                      <div>
+                        <h5 class="card-subtitle">{res.firstName}</h5>
+                        <h5 class="card-title">{res.lastName}</h5>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -90,16 +106,11 @@ export default class Drivers extends React.Component {
         <div class="modal" id="driverCard" tabindex="-1">
           <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header d-flex justify-content-start align-items-end">
                 <h5 class="modal-subtitle">
                   {this.state.driverCard.firstName}
                 </h5>
                 <h5 class="modal-title">{this.state.driverCard.lastName}</h5>
-                <img
-                  src={this.getDriver(this.state.driverCard.lastName)}
-                  height="250px"
-                  alt="driver"
-                ></img>
               </div>
               <div class="modal-body">
                 <div class="container-fluid">
