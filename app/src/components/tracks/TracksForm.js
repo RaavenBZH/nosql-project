@@ -7,17 +7,16 @@ import Form from "react-bootstrap/Form";
 
 import { api_host } from "../../config";
 
-export default class DriversForm extends React.Component {
+export default class TracksForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: true,
 
-      lastName: "",
-      firstName: "",
-      team: "",
-      dob: "",
+      country: "",
+      city: "",
+      length: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,18 +32,17 @@ export default class DriversForm extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        lastName: this.state.lastName,
-        firstName: this.state.firstName,
-        team: this.state.team,
-        birthdate: this.state.dob,
+        country: this.state.country,
+        city: this.state.city,
+        length: this.state["length"],
       }),
     };
 
-    fetch(`${api_host}/post/drivers`, args)
+    fetch(`${api_host}/post/tracks`, args)
       .then((response) => response.json())
       .catch((err) => console.error(err));
 
-    this.setState({ lastName: "", firstName: "", team: "", dob: "" });
+    this.setState({ country: "", city: "", length: "" });
   }
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -67,42 +65,33 @@ export default class DriversForm extends React.Component {
             <Row>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>Last Name</Form.Label>
+                  <Form.Label>Country</Form.Label>
                   <Form.Control
                     type="text"
-                    name="lastName"
-                    placeholder="Last Name"
+                    name="country"
+                    placeholder="Country"
                     onChange={this.handleChange}
                   />
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>First Name</Form.Label>
+                  <Form.Label>City</Form.Label>
                   <Form.Control
                     type="text"
-                    name="firstName"
-                    placeholder="First Name"
+                    name="city"
+                    placeholder="City"
                     onChange={this.handleChange}
                   />
                 </Form.Group>
               </Col>
             </Row>
             <Form.Group className="mb-3">
-              <Form.Label>Team</Form.Label>
+              <Form.Label>Length</Form.Label>
               <Form.Control
                 type="text"
-                name="team"
-                placeholder="Team"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Date Of Birth</Form.Label>
-              <Form.Control
-                type="text"
-                name="dob"
-                placeholder="Birthday"
+                name="length"
+                placeholder="Length"
                 onChange={this.handleChange}
               />
             </Form.Group>
