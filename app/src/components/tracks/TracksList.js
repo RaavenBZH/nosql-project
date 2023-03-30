@@ -13,7 +13,10 @@ export default class TracksList extends React.Component {
 
     this.state = {
       loading: true,
+      _id: "",
     };
+
+    this.deleteTrack = this.deleteTrack.bind(this);
   }
   componentDidMount() {
     fetch(`${api_host}/fetchAll/tracks`)
@@ -30,6 +33,21 @@ export default class TracksList extends React.Component {
       return "n/a";
     }
   }
+  deleteTrack() {
+    if (this.state._id === null) return;
+
+    let args = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        _id: this.state._id,
+      }),
+    };
+
+    fetch(`${api_host}/delete/tracks`, args)
+      .then((response) => response.json())
+      .catch((err) => console.error(err));
+  }
   render() {
     if (this.state.loading) {
       return (
@@ -44,18 +62,23 @@ export default class TracksList extends React.Component {
     return (
       <main className="p-3 m-3">
         <Container>
-          <Table hover>
+          <Table responsive hover>
             <thead>
               <tr>
                 <th scope="col">Country</th>
                 <th scope="col">City</th>
                 <th scope="col">Length</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               {this.state.tracks.map((res, key) => {
                 return (
-                  <tr key={key}>
+                  <tr
+                    key={key}
+                    onMouseEnter={() => this.setState({ _id: res._id })}
+                    onMouseLeave={() => this.setState({ _id: null })}
+                  >
                     <td>
                       <img
                         src={this.getFlag(res.country)}
@@ -65,6 +88,9 @@ export default class TracksList extends React.Component {
                     </td>
                     <td>{res.city}</td>
                     <td>{res["length"] / 1000}</td>
+                    <td onClick={this.deleteTrack}>
+                      <i className="fa-solid fa-trash-can"></i>
+                    </td>
                   </tr>
                 );
               })}
