@@ -20,13 +20,11 @@ body {
 .card-title,
 .modal-title {
   font-family: "Formula1-Bold";
-  font-size: 2.5rem;
   text-transform: uppercase;
 }
 
 .card-subtitle,
 .modal-subtitle {
-  position: relative;
   font-family: "Formula1-Regular";
   font-size: 2.5rem;
 }
@@ -49,4 +47,8 @@ body {
 .card-content {
   transition: all 0.2s ease-in-out;
   text-align: center;
+}
+
+.bg-secondary {
+  color: rgba(33, 37, 41, 1) !important;
 }
