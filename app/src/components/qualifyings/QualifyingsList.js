@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import { api_host } from "../../config";
 
 import useFlags from "../../hooks/useFlags";
+import jsonFlags from "../../assets/json/flags.json";
 
 export default class TracksList extends React.Component {
   constructor(props) {
@@ -27,11 +28,7 @@ export default class TracksList extends React.Component {
       });
   }
   getFlag(country) {
-    if (useFlags[country.slice(0, 2).toLowerCase()] != null) {
-      return useFlags[country.slice(0, 2).toLowerCase()];
-    } else {
-      return "n/a";
-    }
+    return useFlags[jsonFlags[country]]
   }
   expandInfo(standings) {
     this.setState({ standings: standings, showModal: true });

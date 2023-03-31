@@ -101,6 +101,9 @@ export default class QualifyingsForm extends React.Component {
   removeDriverInput(index) {
     let values = [...this.state.standings];
     values.splice(index, 1);
+    for (let i = index; i < values.length; i++) {
+      values[i].rank -= 1;
+    }
     this.setState({
       index: this.state.index - 1,
       standings: [...values],

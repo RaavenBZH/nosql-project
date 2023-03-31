@@ -1,7 +1,7 @@
 const insertion = [
   {
     year: 2022,
-    country: "Barhain",
+    country: "Bahrain",
     city: "Sakhir",
     standings: [
       { driver: "Leclerc", team: "Ferrari" },
@@ -361,7 +361,7 @@ const insertion = [
   },
   {
     year: 2022,
-    country: "Hongrie",
+    country: "Hungary",
     city: "Budapest",
     standings: [
       { driver: "Verstappen", team: "Red Bull" },

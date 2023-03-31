@@ -1,6 +1,6 @@
 const insertion = [
   {
-    country: "Bahrain",
+    country: "Barhain",
     city: "Sakhir",
     length: 5412,
   },
