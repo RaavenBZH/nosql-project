@@ -155,6 +155,7 @@ export default class SeasonsForm extends React.Component {
                   <Form.Control
                     type="text"
                     name="points"
+                    placeholder="Points"
                     onChange={(event) =>
                       this.handleChangeInput(event, index, "racePointsSystem")
                     }
@@ -189,6 +190,7 @@ export default class SeasonsForm extends React.Component {
                   <Form.Control
                     type="text"
                     name="points"
+                    placeholder="Points"
                     onChange={(event) =>
                       this.handleChangeInput(event, index, "sprintPointsSystem")
                     }

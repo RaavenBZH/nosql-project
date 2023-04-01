@@ -147,7 +147,6 @@ export default function Homepage() {
         </h1>
         <div className=" d-flex justify-content-around align-items-center">
           <ReactPlayer url="https://www.youtube.com/watch?v=7YMjw2sjXqU" />
-          <ReactPlayer url="https://www.youtube.com/watch?v=7YMjw2sjXqU" />
         </div>
       </section>
     </main>
