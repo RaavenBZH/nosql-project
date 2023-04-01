@@ -11,7 +11,7 @@ import { api_host } from "../../config";
 import useFlags from "../../hooks/useFlags";
 import jsonFlags from "../../assets/json/flags.json";
 
-export default class QualifyingsList extends React.Component {
+export default class SprintsList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +25,7 @@ export default class QualifyingsList extends React.Component {
     this.deleteEntry = this.deleteEntry.bind(this);
   }
   componentDidMount() {
-    fetch(`${api_host}/fetchAll/qualifyings`)
+    fetch(`${api_host}/fetchAll/sprints`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
@@ -38,6 +38,18 @@ export default class QualifyingsList extends React.Component {
   }
   getFlag(country) {
     return useFlags[jsonFlags[country]];
+  }
+  msToTime(duration) {
+    let milliseconds = parseInt(duration % 1000),
+      seconds = parseInt((duration / 1000) % 60),
+      minutes = parseInt((duration / (1000 * 60)) % 60),
+      hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
   }
   expandInfo(standings) {
     this.setState({ standings: standings, showModal: true });
@@ -53,7 +65,7 @@ export default class QualifyingsList extends React.Component {
       }),
     };
 
-    fetch(`${api_host}/delete/qualifyings`, args)
+    fetch(`${api_host}/delete/sprints`, args)
       .then((response) => response.json())
       .catch((err) => console.error(err));
   }
@@ -71,6 +83,7 @@ export default class QualifyingsList extends React.Component {
                 <th scope="col">Year</th>
                 <th scope="col">Country</th>
                 <th scope="col">City</th>
+                <th scope="col">Duration</th>
                 <th scope="col">Standings</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -92,6 +105,7 @@ export default class QualifyingsList extends React.Component {
                       ></img>
                     </td>
                     <td>{res.city}</td>
+                    <td>{this.msToTime(res.duration)}</td>
                     <td onClick={() => this.expandInfo(res.standings)}>
                       <a href="#" data-bs-toggle="tooltip" title="More">
                         More

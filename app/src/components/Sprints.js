@@ -1,7 +1,44 @@
 import React from "react";
 
-function Sprints() {
-  return <div className="Sprints"></div>;
-}
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
-export default Sprints;
+import SprintsList from "./sprints/SprintsList";
+import SprintsTable from "./sprints/SprintsTable";
+import SprintsForm from "./sprints/SprintsForm";
+
+import Loading from "./Loading";
+
+export default class Sprints extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+    };
+  }
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
+  render() {
+    if (this.state.loading) {
+      return <Loading />;
+    }
+
+    return (
+      <main className="p-3 m-3">
+        <Tabs defaultActiveKey="explore" className="mb-3">
+          <Tab eventKey="explore" title="Explore">
+            <SprintsList />
+          </Tab>
+          <Tab eventKey="more" title="More">
+            <SprintsTable />
+          </Tab>
+          <Tab eventKey="add" title="Add">
+            <SprintsForm />
+          </Tab>
+        </Tabs>
+      </main>
+    );
+  }
+}

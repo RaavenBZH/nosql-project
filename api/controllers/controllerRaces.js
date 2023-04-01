@@ -1,8 +1,8 @@
-const api = require("../services/APIDrivers");
+const api = require("../services/APIRaces");
 
-const getPilots = (req, res) => {
+const getBestPilot = (req, res) => {
   api
-    .pilots()
+    .bestPilot()
     .then((results) => {
       res.send({ status: "OK", data: results });
     })
@@ -11,10 +11,10 @@ const getPilots = (req, res) => {
     });
 };
 
-const getAvgAge = (req, res) => {
+const getPodiumsFerrari = (req, res) => {
   api
-    .avgAge()
-    .then((results) => {
+    .podiumsFerrari()
+    .then(() => {
       res.send({ status: "OK", data: results });
     })
     .catch((err) => {
@@ -23,6 +23,6 @@ const getAvgAge = (req, res) => {
 };
 
 module.exports = {
-  getPilots,
-  getAvgAge,
+  getBestPilot,
+  getPodiumsFerrari,
 };

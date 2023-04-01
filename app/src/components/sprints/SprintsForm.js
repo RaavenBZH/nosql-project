@@ -10,7 +10,7 @@ import Loading from "../Loading";
 
 import { api_host } from "../../config";
 
-export default class QualifyingsForm extends React.Component {
+export default class SprintsForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ export default class QualifyingsForm extends React.Component {
       year: "",
       country: "",
       city: "",
-      poleLap: "",
+      duration: "",
 
       index: 1,
       standings: [
@@ -58,11 +58,11 @@ export default class QualifyingsForm extends React.Component {
         country: this.state.country,
         city: this.state.city,
         standings: standings,
-        poleLap: this.state.poleLap,
+        duration: this.state.duration,
       }),
     };
 
-    fetch(`${api_host}/post/qualifyings`, args)
+    fetch(`${api_host}/post/sprints`, args)
       .then((response) => response.json())
       .catch((err) => console.error(err));
 
@@ -70,7 +70,7 @@ export default class QualifyingsForm extends React.Component {
       year: "",
       country: "",
       city: "",
-      poleLap: "",
+      duration: "",
 
       index: 1,
       standings: [
@@ -199,12 +199,12 @@ export default class QualifyingsForm extends React.Component {
               ))}
             </div>
             <Form.Group className="mb-3">
-              <Form.Label>Pole Lap</Form.Label>
+              <Form.Label>Duration</Form.Label>
               <Form.Control
                 type="text"
-                name="poleLap"
-                value={this.state.poleLap}
-                placeholder="Pole Lap"
+                name="duration"
+                value={this.state.duration}
+                placeholder="Duration"
                 onChange={this.handleChange}
               />
             </Form.Group>

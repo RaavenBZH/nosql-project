@@ -10,48 +10,27 @@ class APIDrivers {
     });
   }
 
-  bestPilot() {
+  pilots() {
     return new Promise((resolve, reject) => {
-      var count = {};
+      var count = 0;
+      var memo = [];
 
       this.db
-        .collection("qualifyings")
+        .collection("races")
         .find({})
         .toArray()
         .then((docs) => {
           docs.forEach((doc) => {
-            var poleman = doc.standings[0].driver;
-            if (count[poleman] == undefined) {
-              count[poleman] = 1;
-            } else {
-              count[poleman]++;
+            var winner = doc.standings[0].driver;
+            if (!memo.includes(winner)) {
+              count++;
+              memo.push(winner);
             }
           });
-
-          var max = 0;
-          var driver = [];
-          for (var key in count) {
-            if (count[key] > max) {
-              max = count[key];
-              driver = [key];
-            } else if (count[key] == max) {
-              driver.push(key);
-            }
-          }
-
-          if (driver.length == 1) {
-            count = driver[0];
-          } else {
-            count = driver;
-          }
         })
         .then(() => {
-          console.log("fetched best pilot from collection: drivers");
-          resolve(count);
-        })
-        .catch((err) => {
-          console.error(err);
-          reject(err);
+          console.log("fetched the winning pilots");
+          resolve(`>>> ${count} (${memo})`);
         });
     });
   }
@@ -77,8 +56,12 @@ class APIDrivers {
           });
         })
         .then(() => {
-          console.log("fetched avg age from collection: drivers");
-          resolve((ages.reduce((a, b) => a + b) / ages.length).toFixed(2));
+          console.log("fetched the average age of the pilots");
+          resolve(
+            ">>> " +
+              (ages.reduce((a, b) => a + b) / ages.length).toFixed(2) +
+              " ans"
+          );
         })
         .catch((err) => {
           console.error(err);

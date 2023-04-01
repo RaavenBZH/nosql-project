@@ -1,10 +1,11 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
+
+import Loading from "../Loading";
 
 import { api_host } from "../../config";
 
@@ -22,12 +23,16 @@ export default class Drivers extends React.Component {
       driverCard: [],
     };
 
-    this.deleteDriver = this.deleteDriver.bind(this);
+    this.deleteEntry = this.deleteEntry.bind(this);
   }
   componentDidMount() {
     fetch(`${api_host}/fetchAll/drivers`)
       .then((response) => response.json())
-      .then((res) => this.setState({ drivers: res.data, loading: false }))
+      .then((res) => {
+        if (res.status === "OK") {
+          this.setState({ drivers: res.data, loading: false });
+        }
+      })
       .catch((err) => {
         console.error(err);
       });
@@ -53,7 +58,7 @@ export default class Drivers extends React.Component {
       }
     }
   }
-  deleteDriver() {
+  deleteEntry() {
     let args = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -68,13 +73,7 @@ export default class Drivers extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return (
-        <main className="p-3 m-3">
-          <Container className="d-flex justify-content-center">
-            <div className="spinner-grow text-danger" role="status"></div>
-          </Container>
-        </main>
-      );
+      return <Loading />;
     }
 
     return (
@@ -91,17 +90,21 @@ export default class Drivers extends React.Component {
                   <div className="d-flex justify-content-center align-items-center">
                     <img
                       src={this.getDriver(res.lastName)}
-                      height="150px"
+                      height="125px"
                       alt="driver"
                     ></img>
                     {this.state.isHover === key ? (
-                      <Card.Title className="fs-2">{res.lastName}</Card.Title>
+                      <Card.Title className="fs-2 text-truncate">
+                        {res.lastName}
+                      </Card.Title>
                     ) : (
                       <div>
-                        <Card.Subtitle className="fs-4">
+                        <Card.Subtitle className="fs-4 text-truncate">
                           {res.firstName}
                         </Card.Subtitle>
-                        <Card.Title className="fs-3">{res.lastName}</Card.Title>
+                        <Card.Title className="fs-3 text-truncate">
+                          {res.lastName}
+                        </Card.Title>
                       </div>
                     )}
                   </div>
@@ -140,7 +143,7 @@ export default class Drivers extends React.Component {
             <button
               type="button"
               className="btn btn-danger"
-              onClick={this.deleteDriver}
+              onClick={this.deleteEntry}
             >
               Delete
             </button>

@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
+import Loading from "../Loading";
+
 import { api_host } from "../../config";
 
 export default class TracksForm extends React.Component {
@@ -49,13 +51,7 @@ export default class TracksForm extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return (
-        <main className="p-3 m-3">
-          <Container className="d-flex justify-content-center">
-            <div className="spinner-grow text-danger" role="status"></div>
-          </Container>
-        </main>
-      );
+      return <Loading />;
     }
 
     return (
@@ -69,6 +65,7 @@ export default class TracksForm extends React.Component {
                   <Form.Control
                     type="text"
                     name="country"
+                    value={this.state.country}
                     placeholder="Country"
                     onChange={this.handleChange}
                   />
@@ -80,6 +77,7 @@ export default class TracksForm extends React.Component {
                   <Form.Control
                     type="text"
                     name="city"
+                    value={this.state.city}
                     placeholder="City"
                     onChange={this.handleChange}
                   />
@@ -91,6 +89,7 @@ export default class TracksForm extends React.Component {
               <Form.Control
                 type="text"
                 name="length"
+                value={this.state["length"]}
                 placeholder="Length"
                 onChange={this.handleChange}
               />

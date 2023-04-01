@@ -1,7 +1,7 @@
 const mongo = require("mongodb").MongoClient;
 const host = require("./config").influx_host;
 
-class APITracks {
+class APISprints {
   constructor() {
     this.host = host;
 
@@ -97,4 +97,4 @@ class APITracks {
   }
 }
 
-module.exports = new APITracks();
+module.exports = new APISprints();

@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
+import Loading from "../Loading";
+
 import { api_host } from "../../config";
 
 export default class DriversForm extends React.Component {
@@ -51,13 +53,7 @@ export default class DriversForm extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return (
-        <main className="p-3 m-3">
-          <Container className="d-flex justify-content-center">
-            <div className="spinner-grow text-danger" role="status"></div>
-          </Container>
-        </main>
-      );
+      return <Loading />;
     }
 
     return (
@@ -71,6 +67,7 @@ export default class DriversForm extends React.Component {
                   <Form.Control
                     type="text"
                     name="lastName"
+                    value={this.state.lastName}
                     placeholder="Last Name"
                     onChange={this.handleChange}
                   />
@@ -82,6 +79,7 @@ export default class DriversForm extends React.Component {
                   <Form.Control
                     type="text"
                     name="firstName"
+                    value={this.state.firstName}
                     placeholder="First Name"
                     onChange={this.handleChange}
                   />
@@ -93,6 +91,7 @@ export default class DriversForm extends React.Component {
               <Form.Control
                 type="text"
                 name="team"
+                value={this.state.team}
                 placeholder="Team"
                 onChange={this.handleChange}
               />
@@ -102,6 +101,7 @@ export default class DriversForm extends React.Component {
               <Form.Control
                 type="text"
                 name="dob"
+                value={this.state.dob}
                 placeholder="Birthday"
                 onChange={this.handleChange}
               />

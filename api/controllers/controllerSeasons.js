@@ -1,8 +1,8 @@
-const api = require("../services/APIDrivers");
+const api = require("../services/APISeasons");
 
-const getPilots = (req, res) => {
+const getHighestPodiums = (req, res) => {
   api
-    .pilots()
+    .highestPodiums()
     .then((results) => {
       res.send({ status: "OK", data: results });
     })
@@ -11,10 +11,10 @@ const getPilots = (req, res) => {
     });
 };
 
-const getAvgAge = (req, res) => {
+const getSecondBest = (req, res) => {
   api
-    .avgAge()
-    .then((results) => {
+    .secondBest()
+    .then(() => {
       res.send({ status: "OK", data: results });
     })
     .catch((err) => {
@@ -23,6 +23,6 @@ const getAvgAge = (req, res) => {
 };
 
 module.exports = {
-  getPilots,
-  getAvgAge,
+  getHighestPodiums,
+  getSecondBest,
 };

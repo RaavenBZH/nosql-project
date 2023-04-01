@@ -7,35 +7,35 @@ import Loading from "../Loading";
 
 import { api_host } from "../../config";
 
-export default class QualifyingsTable extends React.Component {
+export default class RacesTable extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: true,
 
-      bestPilot: "",
+      podiums: "",
       leaderboard: [],
     };
   }
   componentDidMount() {
-    fetch(`${api_host}/fetch/qualifyings/getBestPilot`)
+    fetch(`${api_host}/fetch/seasons/getHighestPodiums`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
-          this.setState({ bestPilot: res.data, loading: false });
+          this.setState({ podiums: res.data, loading: false });
         }
       })
       .catch((err) => {
         console.error(err);
       });
 
-    fetch(`${api_host}/fetch/qualifyings/getLeaderboard`)
+    fetch(`${api_host}/fetch/seasons/getSecondBest`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
           this.setState({
-            leaderboard: JSON.parse(res.data),
+            leaderboard: res.data,
             loading: false,
           });
         }
@@ -51,19 +51,21 @@ export default class QualifyingsTable extends React.Component {
 
     return (
       <main className="p-3 m-3">
-        <Accordion defaultActiveKey="bestPilot">
-          <Accordion.Item eventKey="bestPilot">
+        <Accordion defaultActiveKey="podiums">
+          <Accordion.Item eventKey="podiums">
             <Accordion.Header>
-              Qui a gagné le plus de postions entre la qualification et la
-              course en France ?
+              Combien de podiums le champion en titre par équipes a-t-il obtenu
+              ?
             </Accordion.Header>
-            <Accordion.Body>{this.state.bestPilot}</Accordion.Body>
+            <Accordion.Body>{this.state.podiums}</Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="leaderboard">
+          <Accordion.Item eventKey="second">
             <Accordion.Header>
-              Quel est le classement du championnat des pilotes ?
+              Si l'équipe Red Bull était déclassée de toutes les sessions, qui
+              aurait gagné le championnat par équipe ?
             </Accordion.Header>
             <Accordion.Body>
+              {" "}
               <Table responsive hover>
                 <thead>
                   <tr>
@@ -78,7 +80,7 @@ export default class QualifyingsTable extends React.Component {
                     return (
                       <tr key={key}>
                         <td>{res.driver}</td>
-                        <td>{res.points}</td>
+                        <td>{res.team}</td>
                       </tr>
                     );
                   })}

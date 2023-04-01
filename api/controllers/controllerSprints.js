@@ -1,8 +1,8 @@
-const api = require("../services/APIDrivers");
+const api = require("../services/APISprints");
 
-const getPilots = (req, res) => {
+const getHighestSpeed = (req, res) => {
   api
-    .pilots()
+    .highestSpeed()
     .then((results) => {
       res.send({ status: "OK", data: results });
     })
@@ -11,10 +11,10 @@ const getPilots = (req, res) => {
     });
 };
 
-const getAvgAge = (req, res) => {
+const getAvgTrack = (req, res) => {
   api
-    .avgAge()
-    .then((results) => {
+    .avgTrack()
+    .then(() => {
       res.send({ status: "OK", data: results });
     })
     .catch((err) => {
@@ -23,6 +23,6 @@ const getAvgAge = (req, res) => {
 };
 
 module.exports = {
-  getPilots,
-  getAvgAge,
+  getHighestSpeed,
+  getAvgTrack,
 };

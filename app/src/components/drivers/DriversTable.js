@@ -1,7 +1,8 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container";
 import Accordion from "react-bootstrap/Accordion";
+
+import Loading from "../Loading";
 
 import { api_host } from "../../config";
 
@@ -11,37 +12,34 @@ export default class DriversTable extends React.Component {
 
     this.state = {
       loading: true,
-
-      bestPilot: "",
-      avgAge: "",
     };
   }
   componentDidMount() {
-    fetch(`${api_host}/fetch/drivers/getBestPilot`)
+    fetch(`${api_host}/fetch/drivers/getPilots`)
       .then((response) => response.json())
-      .then((res) => this.setState({ bestPilot: res.data }))
+      .then((res) => {
+        if (res.status === "OK") {
+          this.setState({ pilots: res.data, loading: false });
+        }
+      })
       .catch((err) => {
         console.error(err);
       });
 
     fetch(`${api_host}/fetch/drivers/getAvgAge`)
       .then((response) => response.json())
-      .then((res) => this.setState({ avgAge: res.data }))
+      .then((res) => {
+        if (res.status === "OK") {
+          this.setState({ avgAge: res.data, loading: false });
+        }
+      })
       .catch((err) => {
         console.error(err);
       });
-
-    this.setState({ loading: false });
   }
   render() {
     if (this.state.loading) {
-      return (
-        <main className="p-3 m-3">
-          <Container className="container d-flex justify-content-center">
-            <div className="spinner-grow text-danger" role="status"></div>
-          </Container>
-        </main>
-      );
+      return <Loading />;
     }
 
     return (
@@ -49,10 +47,9 @@ export default class DriversTable extends React.Component {
         <Accordion defaultActiveKey="bestPilot">
           <Accordion.Item eventKey="bestPilot">
             <Accordion.Header>
-              Quel pilote a obtenu le plus de pôles positions (1er en
-              qualifications) ?
+              Combien de pilotes différents ont gagné une course ?
             </Accordion.Header>
-            <Accordion.Body>{this.state.bestPilot}</Accordion.Body>
+            <Accordion.Body>{this.state.pilots}</Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="avgAge">
             <Accordion.Header>

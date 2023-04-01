@@ -7,7 +7,7 @@
   <title>React App</title>
 </head>
 
-<body>
+<body class="min-vh-100 d-flex flex-column">
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -66,9 +66,9 @@
     </div>
   </nav>
 
-  <div id="root"></div>
+  <div id="root" class="flex-grow-1"></div>
 
-  <footer class="p-5 bg-dark fixed-bottom">
+  <footer class="p-5 bg-dark justify-self-end">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item">
         <a href="/drivers" class="nav-link px-2 text-muted">

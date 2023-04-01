@@ -6,7 +6,7 @@ import Loading from "../Loading";
 
 import { api_host } from "../../config";
 
-export default class TracksTable extends React.Component {
+export default class SprintsTable extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,7 @@ export default class TracksTable extends React.Component {
     };
   }
   componentDidMount() {
-    fetch(`${api_host}/fetch/tracks/getHighestSpeed`)
+    fetch(`${api_host}/fetch/sprints/getHighestSpeed`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
@@ -26,7 +26,7 @@ export default class TracksTable extends React.Component {
         console.error(err);
       });
 
-    fetch(`${api_host}/fetch/tracks/getAvgTrack`)
+    fetch(`${api_host}/fetch/sprints/getAvgTrack`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
@@ -44,19 +44,19 @@ export default class TracksTable extends React.Component {
 
     return (
       <main className="p-3 m-3">
-        <Accordion defaultActiveKey="avgTrack">
-          <Accordion.Item eventKey="avgTrack">
-            <Accordion.Header>
-              Quelle est la longueur moyenne d'un circuit en 2022 (en mètres) ?
-            </Accordion.Header>
-            <Accordion.Body>{this.state.avgTrack}</Accordion.Body>
-          </Accordion.Item>
+        <Accordion defaultActiveKey="highestSpeed">
           <Accordion.Item eventKey="highestSpeed">
             <Accordion.Header>
               Sur quel circuit la vitesse moyenne était-elle la plus élevée en
               course ?
             </Accordion.Header>
             <Accordion.Body>{this.state.highestSpeed}</Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="avgTrack">
+            <Accordion.Header>
+              Quelle est la longueur moyenne d'un circuit en 2022 (en mètres) ?
+            </Accordion.Header>
+            <Accordion.Body>{this.state.avgTrack}</Accordion.Body>
           </Accordion.Item>
         </Accordion>
       </main>

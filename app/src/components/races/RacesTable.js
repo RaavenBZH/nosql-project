@@ -6,7 +6,7 @@ import Loading from "../Loading";
 
 import { api_host } from "../../config";
 
-export default class TracksTable extends React.Component {
+export default class RacesTable extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,22 +15,25 @@ export default class TracksTable extends React.Component {
     };
   }
   componentDidMount() {
-    fetch(`${api_host}/fetch/tracks/getHighestSpeed`)
+    fetch(`${api_host}/fetch/races/getBestPilot`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
-          this.setState({ highestSpeed: res.data, loading: false });
+          this.setState({ bestPilot: res.data, loading: false });
         }
       })
       .catch((err) => {
         console.error(err);
       });
 
-    fetch(`${api_host}/fetch/tracks/getAvgTrack`)
+    fetch(`${api_host}/fetch/races/getPodiumsFerrari`)
       .then((response) => response.json())
       .then((res) => {
         if (res.status === "OK") {
-          this.setState({ avgTrack: res.data, loading: false });
+          this.setState({
+            podiums: res.data,
+            loading: false,
+          });
         }
       })
       .catch((err) => {
@@ -44,19 +47,19 @@ export default class TracksTable extends React.Component {
 
     return (
       <main className="p-3 m-3">
-        <Accordion defaultActiveKey="avgTrack">
-          <Accordion.Item eventKey="avgTrack">
+        <Accordion defaultActiveKey="bestPilot">
+          <Accordion.Item eventKey="bestPilot">
             <Accordion.Header>
-              Quelle est la longueur moyenne d'un circuit en 2022 (en mètres) ?
+              Quel pilote a obtenu le plus de pôles positions (1er en
+              qualifications) ?
             </Accordion.Header>
-            <Accordion.Body>{this.state.avgTrack}</Accordion.Body>
+            <Accordion.Body>{this.state.bestPilot}</Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="highestSpeed">
+          <Accordion.Item eventKey="podiums">
             <Accordion.Header>
-              Sur quel circuit la vitesse moyenne était-elle la plus élevée en
-              course ?
+              Quel est le classement du championnat des pilotes ?
             </Accordion.Header>
-            <Accordion.Body>{this.state.highestSpeed}</Accordion.Body>
+            <Accordion.Body>{this.state.podiums}</Accordion.Body>
           </Accordion.Item>
         </Accordion>
       </main>
