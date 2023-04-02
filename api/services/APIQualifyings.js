@@ -61,7 +61,7 @@ class APIQualifyings {
         .then(() => {
           console.log("fetched the pilot(s) who gained the most positions");
           resolve(
-            `>>> ${pilotes} a/ont gagné ${max} postions entre la qualification et la course.`
+            `${pilotes} a/ont gagné ${max} postions entre la qualification et la course.`
           );
         })
         .catch((err) => {

@@ -30,7 +30,9 @@ class APIDrivers {
         })
         .then(() => {
           console.log("fetched the winning pilots");
-          resolve(`>>> ${count} (${memo})`);
+          resolve(
+            `Les pilotes ayant gagné une course sont au nombre de ${count} (${memo}).`
+          );
         });
     });
   }
@@ -58,9 +60,9 @@ class APIDrivers {
         .then(() => {
           console.log("fetched the average age of the pilots");
           resolve(
-            ">>> " +
-              (ages.reduce((a, b) => a + b) / ages.length).toFixed(2) +
-              " ans"
+            `La moyenne d'âge parmi les pilotes est de ${(
+              ages.reduce((a, b) => a + b) / ages.length
+            ).toFixed(2)} ans`
           );
         })
         .catch((err) => {

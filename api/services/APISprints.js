@@ -54,13 +54,7 @@ class APISprints {
 
           console.log("fetched highest speed from collection: tracks");
           resolve(
-            ">>> " +
-              best.country +
-              ", " +
-              best.city +
-              " at " +
-              best.speed.toFixed(2) +
-              " km/h"
+            `${best.country}, ${best.city} at ${best.speed.toFixed(2)} km/h`
           );
         })
         .catch((err) => {
@@ -87,7 +81,11 @@ class APISprints {
         })
         .then(() => {
           console.log("fetched avg track length from collection: tracks");
-          resolve(">>> " + (sum / count).toFixed(2));
+          resolve(
+            `La longueur moyenne d'un circuit est de ${(sum / count).toFixed(
+              2
+            )}`
+          );
         })
         .catch((err) => {
           console.error(err);
