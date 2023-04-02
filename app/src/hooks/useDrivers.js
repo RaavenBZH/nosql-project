@@ -1,11 +1,11 @@
-const context = require.context("../assets/img/drivers", true, /.avif$/);
+const context = require.context("../assets/img/drivers", true, /.png$/);
 
 const useDrivers = {};
 context.keys().forEach((key) => {
   const driver = key
     .split("./")
     .pop()
-    .substring(0, key.length - 7);
+    .substring(0, key.length - 6);
   useDrivers[driver] = context(key);
 });
 

@@ -62,7 +62,7 @@ class APIDrivers {
           resolve(
             `La moyenne d'âge parmi les pilotes est de ${(
               ages.reduce((a, b) => a + b) / ages.length
-            ).toFixed(2)} ans`
+            ).toFixed(2)} ans.`
           );
         })
         .catch((err) => {
