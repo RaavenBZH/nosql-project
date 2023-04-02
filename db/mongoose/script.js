@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 
 const Driver = require("./collections/drivers");
-const docDrivers = require("../db/insertions/drivers");
+const docDrivers = require("../insertions/drivers");
 
 const Race = require("./collections/races");
-const docRaces = require("../db/insertions/races");
+const docRaces = require("../insertions/races");
 
-mongoose.connect("mongodb://localhost:27017/f1_mongoose")
+mongoose
+  .connect("mongodb://localhost:27017/f1_mongoose")
   .then(() => {
     console.log("Successfully connected to the database");
     return Promise.all([
       Driver.insertMany(docDrivers, { ordered: true }),
-      Race.insertMany(docRaces, { ordered: true })
+      Race.insertMany(docRaces, { ordered: true }),
     ]);
   })
   .then(() => {

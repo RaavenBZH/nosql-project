@@ -52,3 +52,9 @@ Running the test queries
 ```bash
 npm run test
 ```
+
+Executing the database on Mongoose
+
+```bash
+npm run mongoose
+```
