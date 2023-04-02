@@ -103,7 +103,7 @@ class APIQualifyings {
             if (theSprint != undefined) theSprint = theSprint.standings;
 
             var points_race = document.theSeason[0].racePointsSystem;
-            var points_sprint = document.theSeason[0].sprintPointSystem;
+            var points_sprint = document.theSeason[0].sprintPointsSystem;
 
             var driver;
 

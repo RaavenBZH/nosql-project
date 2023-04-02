@@ -47,7 +47,7 @@ class APIRaces {
         })
         .then(() => {
           console.log("fetched the pilot with the most pole positions");
-          console.log(">>> " + count);
+          resolve(">>> " + count);
         })
         .catch((err) => {
           console.error(err);
@@ -76,7 +76,7 @@ class APIRaces {
         })
         .then(() => {
           console.log("fetched the number of podiums of team Ferrari");
-          console.log(">>> " + count);
+          resolve(">>> " + count);
         })
         .catch((err) => {
           console.error(err);

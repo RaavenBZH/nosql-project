@@ -14,7 +14,7 @@ const getHighestPodiums = (req, res) => {
 const getSecondBest = (req, res) => {
   api
     .secondBest()
-    .then(() => {
+    .then((results) => {
       res.send({ status: "OK", data: results });
     })
     .catch((err) => {

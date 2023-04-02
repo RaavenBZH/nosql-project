@@ -35,7 +35,7 @@ export default class QualifyingsTable extends React.Component {
       .then((res) => {
         if (res.status === "OK") {
           this.setState({
-            leaderboard: JSON.parse(res.data),
+            leaderboard: this.formatLeaderboard(res.data),
             loading: false,
           });
         }
@@ -43,6 +43,18 @@ export default class QualifyingsTable extends React.Component {
       .catch((err) => {
         console.error(err);
       });
+  }
+  formatLeaderboard(data) {
+    let leaderboard = [];
+
+    for (let item in data) {
+      leaderboard.push({
+        driver: item,
+        points: data[item],
+      });
+    }
+
+    return leaderboard;
   }
   render() {
     if (this.state.loading) {
@@ -73,8 +85,6 @@ export default class QualifyingsTable extends React.Component {
                 </thead>
                 <tbody>
                   {this.state.leaderboard.map((res, key) => {
-                    console.log(this.state.leaderboard);
-
                     return (
                       <tr key={key}>
                         <td>{res.driver}</td>

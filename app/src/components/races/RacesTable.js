@@ -57,7 +57,7 @@ export default class RacesTable extends React.Component {
           </Accordion.Item>
           <Accordion.Item eventKey="podiums">
             <Accordion.Header>
-              Quel est le classement du championnat des pilotes ?
+              Combien de podiums l'équipe Ferrari a-t-elle obtenu ?
             </Accordion.Header>
             <Accordion.Body>{this.state.podiums}</Accordion.Body>
           </Accordion.Item>

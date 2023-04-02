@@ -14,7 +14,7 @@ const getHighestSpeed = (req, res) => {
 const getAvgTrack = (req, res) => {
   api
     .avgTrack()
-    .then(() => {
+    .then((results) => {
       res.send({ status: "OK", data: results });
     })
     .catch((err) => {

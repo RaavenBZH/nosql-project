@@ -56,12 +56,12 @@ export default class RacesForm extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        year: this.state.year,
+        year: Number(this.state.year),
         country: this.state.country,
         city: this.state.city,
         standings: standings,
-        duration: this.state.duration,
-        lapsCompleted: this.state.lapsCompleted,
+        duration: Number(this.state.duration),
+        lapsCompleted: Number(this.state.lapsCompleted),
         fastestDriver: this.state.fastestDriver,
       }),
     };

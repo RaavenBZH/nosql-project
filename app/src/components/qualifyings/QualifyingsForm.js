@@ -54,11 +54,11 @@ export default class QualifyingsForm extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        year: this.state.year,
+        year: Number(this.state.year),
         country: this.state.country,
         city: this.state.city,
         standings: standings,
-        poleLap: this.state.poleLap,
+        poleLap: Number(this.state.poleLap),
       }),
     };
 
