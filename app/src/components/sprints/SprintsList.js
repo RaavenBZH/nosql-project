@@ -150,7 +150,7 @@ export default class SprintsList extends React.Component {
           <Modal.Footer>
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={() => this.setState({ showModal: false })}
             >
               Close
