@@ -86,7 +86,6 @@
     └── setupTests.js
 
 23 directories, 351 files
-
 ```
 
 ## Requirements
@@ -103,9 +102,13 @@ module.exports = {
 
 ## Run
 
+Installing the required dependencies
+
 ```bash
 npm install
 ```
+
+Launching React application
 
 ```bash
 npm start

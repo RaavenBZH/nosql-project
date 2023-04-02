@@ -35,7 +35,7 @@
 /api/services/config.js
 
 ```js
-const influx_host = "url";
+const influx_host = "mongodb://{ip_adress}:27017";
 
 module.exports = {
   influx_host: influx_host,
@@ -44,9 +44,13 @@ module.exports = {
 
 ## Run
 
+Installing the required dependencies
+
 ```bash
 npm install
 ```
+
+Launching the API
 
 ```bash
 npm start
