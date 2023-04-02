@@ -2,7 +2,7 @@ const schema = {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      description: "Drivers collection",
+      title: "Drivers collection",
       required: ["lastName", "firstName", "team", "birthdate"],
       properties: {
         _id: {
@@ -24,7 +24,7 @@ const schema = {
             "Team of the driver, must be an objectId and is required",
         },
         birthdate: {
-          bsonType: "date",
+          bsonType: "string",
           description:
             "Birthdate of the driver, must be a date and is required",
         },

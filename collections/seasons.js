@@ -2,8 +2,15 @@ const schema = {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      description: "Seasons collection",
-      required: ["year", "numberOfRaces", "defendingDriverChampion", "defendingTeamChampion", "racePointsSystem", "sprintPointSystem"],
+      title: "Seasons collection",
+      required: [
+        "year",
+        "numberOfRaces",
+        "defendingDriverChampion",
+        "defendingTeamChampion",
+        "racePointsSystem",
+        "sprintPointSystem",
+      ],
       properties: {
         _id: {
           bsonType: "objectId",
@@ -14,15 +21,18 @@ const schema = {
         },
         numberOfRaces: {
           bsonType: "int",
-          description: "Number of races in the season, must be an integer and is required",
+          description:
+            "Number of races in the season, must be an integer and is required",
         },
         defendingDriverChampion: {
           bsonType: "string",
-          description: "Defending driver champion, must be an objectId and is required",
+          description:
+            "Defending driver champion, must be an objectId and is required",
         },
         defendingTeamChampion: {
           bsonType: "string",
-          description: "Defending team champion, must be an objectId and is required",
+          description:
+            "Defending team champion, must be an objectId and is required",
         },
         racePointsSystem: {
           bsonType: "array",
@@ -40,7 +50,7 @@ const schema = {
             description: "Points for each position, must be an integer",
           },
         },
-      }
+      },
     },
   },
 };

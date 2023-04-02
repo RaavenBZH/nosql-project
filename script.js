@@ -25,97 +25,108 @@ mongo.connect("mongodb://localhost:27017").then(
     let db = client.db("f1");
 
     // drivers
-    let drivers = db.collection("drivers", collDrivers, (err) => {
-      console.error(err);
-    });
-
-    drivers
-      .insertMany(docDrivers, {
-        ordered: true,
-      })
-      .then(() => {
-        console.log("drivers insertion success");
+    db.createCollection("drivers", collDrivers)
+      .then((drivers) => {
+        drivers
+          .insertMany(docDrivers, {
+            ordered: true,
+          })
+          .then(() => {
+            console.log("drivers insertion success");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
       });
 
-
     // qualifyings
-    let qualifyings = db.collection("qualifyings", collQualifyings, (err) => {
-      console.error(err);
-    });
-
-    qualifyings
-      .insertMany(docQualifyings, {
-        ordered: true,
-      })
-      .then(() => {
-        console.log("qualifyings insertion success");
+    db.createCollection("qualifyings", collQualifyings)
+      .then((qualifyings) => {
+        qualifyings
+          .insertMany(docQualifyings, {
+            ordered: true,
+          })
+          .then(() => {
+            console.log("qualifyings insertion success");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
       });
 
     // races
-    let races = db.collection("races", collRaces, (err) => {
-      console.error(err);
-    });
-
-    races
-      .insertMany(docRaces, {
-        ordered: true,
-      })
-      .then(() => {
-        console.log("races insertion success");
+    db.createCollection("races", collRaces)
+      .then((races) => {
+        races
+          .insertMany(docRaces, {
+            ordered: true,
+          })
+          .then(() => {
+            console.log("races insertion success");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
       });
 
     // seasons
-    let seasons = db.collection("seasons", collSeasons, (err) => {
-      console.error(err);
-    });
-
-    seasons
-      .insertMany(docSeasons, {
-        ordered: true,
-      })
-      .then(() => {
-        console.log("seasons insertion success");
+    db.createCollection("seasons", collSeasons)
+      .then((seasons) => {
+        seasons
+          .insertMany(docSeasons, {
+            ordered: true,
+          })
+          .then(() => {
+            console.log("seasons insertion success");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
       });
 
     // sprints
-    let sprints = db.collection("sprints", collSprints, (err) => {
-      console.error(err);
-    });
-
-    sprints
-      .insertMany(docSprints, {
-        ordered: true,
-      })
-      .then(() => {
-        console.log("sprints insertion success");
+    db.createCollection("sprints", collSprints)
+      .then((sprints) => {
+        sprints
+          .insertMany(docSprints, {
+            ordered: true,
+          })
+          .then(() => {
+            console.log("sprints insertion success");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
       });
 
     // tracks
-    let tracks = db.collection("tracks", collTracks, (err) => {
-      console.error(err);
-    });
-
-    tracks
-      .insertMany(docTracks, {
-        ordered: true,
-      })
-      .then(() => {
-        console.log("tracks insertion success");
+    db.createCollection("tracks", collTracks)
+      .then((tracks) => {
+        tracks
+          .insertMany(docTracks, {
+            ordered: true,
+          })
+          .then(() => {
+            console.log("tracks insertion success");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
@@ -124,4 +135,4 @@ mongo.connect("mongodb://localhost:27017").then(
   (err) => {
     console.error(err);
   }
-)
+);

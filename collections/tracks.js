@@ -2,7 +2,7 @@ const schema = {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      description: "Tracks collection",
+      title: "Tracks collection",
       required: ["country", "city", "length"],
       properties: {
         _id: {

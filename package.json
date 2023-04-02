@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "start": "node script.js",
-    "launch": "node queries.js"
+    "launch": "node queries.js",
+    "test": "node tests.js"
   },
   "keywords": [],
   "author": "",

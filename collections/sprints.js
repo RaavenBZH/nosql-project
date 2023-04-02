@@ -2,7 +2,7 @@ const schema = {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      description: "Sprints collection",
+      title: "Sprints collection",
       required: ["year", "country", "city", "standings", "duration"],
       properties: {
         _id: {
@@ -24,12 +24,12 @@ const schema = {
             "City of the sprint race, must be a string and is required",
         },
         standings: {
-          bsonType: "object",
+          bsonType: "array",
           description:
             "Standings of the sprint race, must be an array and is required",
           required: ["driver", "team"],
           properties: {
-            name: {
+            driver: {
               bsonType: "string",
               description:
                 "Driver of the sprint race, must be a string and is required",
