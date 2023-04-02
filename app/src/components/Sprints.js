@@ -27,6 +27,10 @@ export default class Sprints extends React.Component {
 
     return (
       <main className="p-3 m-3">
+        <h1>Sprints</h1>
+        <h2>Explore, learn more and add sprints.</h2>
+        <br />
+
         <Tabs defaultActiveKey="explore" className="mb-3">
           <Tab eventKey="explore" title="Explore">
             <SprintsList />

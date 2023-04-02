@@ -27,6 +27,10 @@ export default class Tracks extends React.Component {
 
     return (
       <main className="p-3 m-3">
+        <h1>Qualifyings</h1>
+        <h2>Explore, learn more and add qualifying sessions.</h2>
+        <br />
+
         <Tabs defaultActiveKey="explore" className="mb-3">
           <Tab eventKey="explore" title="Explore">
             <QualifyingsList />

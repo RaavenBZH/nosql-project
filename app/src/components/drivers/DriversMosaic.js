@@ -90,19 +90,19 @@ export default class Drivers extends React.Component {
                   <div className="d-flex justify-content-center align-items-center">
                     <img
                       src={this.getDriver(res.lastName)}
-                      height="125px"
+                      height="100px"
                       alt="driver"
                     ></img>
                     {this.state.isHover === key ? (
-                      <Card.Title className="fs-2 text-truncate">
+                      <Card.Title className="fs-3 text-truncate">
                         {res.lastName}
                       </Card.Title>
                     ) : (
                       <div>
-                        <Card.Subtitle className="fs-4 text-truncate">
+                        <Card.Subtitle className="fs-5 text-truncate">
                           {res.firstName}
                         </Card.Subtitle>
-                        <Card.Title className="fs-3 text-truncate">
+                        <Card.Title className="fs-4 text-truncate">
                           {res.lastName}
                         </Card.Title>
                       </div>

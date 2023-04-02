@@ -27,6 +27,10 @@ export default class Races extends React.Component {
 
     return (
       <main className="p-3 m-3">
+        <h1>Races</h1>
+        <h2>Explore, learn more and add races.</h2>
+        <br />
+
         <Tabs defaultActiveKey="explore" className="mb-3">
           <Tab eventKey="explore" title="Explore">
             <RacesList />
