@@ -6,12 +6,14 @@
   "scripts": {
     "start": "node script.js",
     "launch": "node queries.js",
-    "test": "node tests.js"
+    "test": "node tests.js",
+    "mongoose": "node mongoose/script.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "*"
+    "mongodb": "*",
+    "mongoose": "*"
   }
 }
