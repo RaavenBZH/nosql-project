@@ -3,7 +3,7 @@ const insertion = [
     lastName: "Verstappen",
     firstName: "Max",
     team: "Red Bull",
-    birthdate: "30-09-1997",
+    birthdate: new Date("30-09-1997"),
   },
   {
     lastName: "Perez",
