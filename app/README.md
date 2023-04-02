@@ -24,10 +24,10 @@
     │   │   └── Formula1-Wide.ttf
     │   ├── img
     │   │   ├── drivers
-    │   │   │   └── #.avif
+    │   │   │   └── *.png
     │   │   ├── drivers.jpg
     │   │   ├── flags
-    │   │   │   └── #.svg
+    │   │   │   └── *.svg
     │   │   ├── qualifyings.jpg
     │   │   ├── races.jpg
     │   │   ├── seasons.jpg
@@ -36,7 +36,7 @@
     │   │   ├── slide3.jpg
     │   │   ├── sprints.jpg
     │   │   ├── teams
-    │   │   │   └── #.avif
+    │   │   │   └── *.avif
     │   │   └── tracks.jpg
     │   └── json
     │       └── flags.json
@@ -85,7 +85,7 @@
     ├── reportWebVitals.js
     └── setupTests.js
 
-23 directories, 351 files
+23 directories, 354 files
 ```
 
 ## Requirements
