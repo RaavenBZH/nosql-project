@@ -39,7 +39,7 @@ class APISeasons {
         })
         .then(() => {
           console.log("fetched the number of podiums of the champion");
-          resolve(`Le champion en titre a obtenu un total de ${count} podiums`);
+          resolve(`Le champion en titre a obtenu un total de ${count} podiums.`);
         })
         .catch((err) => {
           console.error(err);
