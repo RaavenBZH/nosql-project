@@ -22,8 +22,8 @@ export default class SeasonsForm extends React.Component {
       defendingDriverChampion: "",
       defendingTeamChampion: "",
 
-      racePointsSystem: [0],
-      sprintPointsSystem: [0],
+      racePointsSystem: [""],
+      sprintPointsSystem: [""],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,20 +37,20 @@ export default class SeasonsForm extends React.Component {
 
     let racePointsSystem = [];
     for (let points of this.state.racePointsSystem) {
-      racePointsSystem.push(points);
+      racePointsSystem.push(Number(points));
     }
 
     let sprintPointsSystem = [];
     for (let points of this.state.sprintPointsSystem) {
-      sprintPointsSystem.push(points);
+      sprintPointsSystem.push(Number(points));
     }
 
     let args = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        year: this.state.year,
-        numberOfRaces: this.state.numberOfRaces,
+        year: Number(this.state.year),
+        numberOfRaces: Number(this.state.numberOfRaces),
         defendingDriverChampion: this.state.defendingDriverChampion,
         defendingTeamChampion: this.state.defendingTeamChampion,
         racePointsSystem: racePointsSystem,
@@ -68,8 +68,8 @@ export default class SeasonsForm extends React.Component {
       defendingDriverChampion: "",
       defendingTeamChampion: "",
 
-      racePointsSystem: [0],
-      sprintPointsSystem: [0],
+      racePointsSystem: [""],
+      sprintPointsSystem: [""],
     });
   }
   handleChange(event) {
@@ -82,7 +82,7 @@ export default class SeasonsForm extends React.Component {
   }
   addInput(field) {
     this.setState({
-      [field]: [...this.state[field], 0],
+      [field]: [...this.state[field], ""],
     });
   }
   removeInput(index, field) {
@@ -154,7 +154,7 @@ export default class SeasonsForm extends React.Component {
                   <InputGroup.Text>#</InputGroup.Text>
                   <Form.Control
                     type="text"
-                    name="points"
+                    name="racePointsSystem"
                     placeholder="Points"
                     onChange={(event) =>
                       this.handleChangeInput(event, index, "racePointsSystem")
@@ -189,7 +189,7 @@ export default class SeasonsForm extends React.Component {
                   <InputGroup.Text>#</InputGroup.Text>
                   <Form.Control
                     type="text"
-                    name="points"
+                    name="sprintPointsSystem"
                     placeholder="Points"
                     onChange={(event) =>
                       this.handleChangeInput(event, index, "sprintPointsSystem")

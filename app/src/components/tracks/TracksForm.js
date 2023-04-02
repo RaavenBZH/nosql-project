@@ -36,7 +36,7 @@ export default class TracksForm extends React.Component {
       body: JSON.stringify({
         country: this.state.country,
         city: this.state.city,
-        length: this.state["length"],
+        length: Number(this.state["length"]),
       }),
     };
 

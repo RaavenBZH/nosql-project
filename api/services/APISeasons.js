@@ -68,7 +68,7 @@ class APISeasons {
               },
               fastestDriver: 1,
               racePointsSystem: 1,
-              sprintPointSystem: 1,
+              sprintPointsSystem: 1,
             },
           },
           {
@@ -94,14 +94,17 @@ class APISeasons {
           results.forEach((document) => {
             var theRace = document.standings;
             var theSprint = document.theSprint[0];
-
             if (theSprint != undefined) theSprint = theSprint.standings;
 
             var points_race = document.theSeason[0].racePointsSystem;
-            var points_sprint = document.theSeason[0].sprintPointSystem;
+            var points_sprint = document.theSeason[0].sprintPointsSystem;
 
             var driver;
-
+            var team;
+            /*
+             The drivers from the top 10 are awarded some points according to the points system.
+             The driver who set the fastest lap is awarded 1 point if he is in the top 10.
+            */
             for (let i = 0; i < theRace.length; i++) {
               driver = theRace[i].driver;
               team = theRace[i].team;
@@ -116,6 +119,9 @@ class APISeasons {
               }
             }
 
+            /*
+              The drivers from the top 8 are awarded some points according to the points system.
+            */
             if (theSprint != undefined) {
               for (let i = 0; i < theSprint.length; i++) {
                 team = theSprint[i].team;
@@ -131,6 +137,7 @@ class APISeasons {
           );
           general_standings = Object.fromEntries(sortedObj);
 
+          console.log("fetched the second best team");
           resolve(general_standings);
         })
         .catch((err) => {

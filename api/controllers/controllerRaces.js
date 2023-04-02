@@ -14,7 +14,7 @@ const getBestPilot = (req, res) => {
 const getPodiumsFerrari = (req, res) => {
   api
     .podiumsFerrari()
-    .then(() => {
+    .then((results) => {
       res.send({ status: "OK", data: results });
     })
     .catch((err) => {
